@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Isa Shahid - CS Student at Monash University | Aspiring Strategy & Technology Consultant">
+    <title>Isa Shahid | Strategy & Technology Consulting</title>
+
+    <!-- ==================== FONTS ==================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ==================== STYLES ==================== -->
+    <style>
+        /* ---------- CSS RESET & BASE ---------- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ---------- UTILITY CLASSES ---------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 48px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* ---------- SCROLL ANIMATIONS ---------- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile hamburger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            border-radius: 1px;
+            transition: var(--transition);
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, #f0f5ff 0%, #e8eef8 40%, var(--white) 100%);
+            padding-top: 68px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle decorative background shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+        }
+
+        .hero-name {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            color: var(--gray-600);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--gray-500);
+            font-weight: 400;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 1.5px solid var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* ---------- ABOUT SECTION ---------- */
+        .about {
+            background: var(--white);
+        }
+
+        .about-text {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--gray-600);
+            max-width: 780px;
+        }
+
+        /* ---------- PROJECTS SECTION ---------- */
+        .projects {
+            background: var(--gray-50);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-color: var(--gray-300);
+        }
+
+        /* Make the consulting project card span full width */
+        .project-card.featured {
+            grid-column: 1 / -1;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .project-badge::before {
+            content: '\2605';
+            font-size: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 6px 0;
+            transition: color var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ---------- EXPERIENCE SECTION ---------- */
+        .experience {
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 36px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--gray-200);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Timeline dot */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-card {
+            background: var(--gray-50);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition);
+        }
+
+        .timeline-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--gray-300);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-role {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .timeline-period {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+            background: var(--primary-bg);
+            padding: 4px 12px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .timeline-company {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            margin-bottom: 14px;
+        }
+
+        .timeline-points {
+            list-style: none;
+        }
+
+        .timeline-points li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+
+        .timeline-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-light);
+            border-radius: 50%;
+        }
+
+        /* ---------- SKILLS SECTION ---------- */
+        .skills {
+            background: var(--gray-50);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .skills-category {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skills-category-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-category-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-bg);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .skills-category-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 100px;
+            transition: all var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-bg);
+            color: var(--primary);
+        }
+
+        /* ---------- ACHIEVEMENTS SECTION ---------- */
+        .achievements {
+            background: var(--white);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .achievement-card {
+            background: var(--gray-50);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .achievement-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-icon {
+            width: 44px;
+            height: 44px;
+            background: #fef3c7;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+
+        .achievement-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .achievement-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .achievement-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- CERTIFICATES SECTION ---------- */
+        .certificates {
+            background: var(--gray-50);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .certificate-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .certificate-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .certificate-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--gray-200);
+            cursor: pointer;
+        }
+
+        .certificate-info {
+            padding: 20px;
+        }
+
+        .certificate-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .certificate-org {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .certificate-date {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+        }
+
+        /* Certificate lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ---------- COMMUNITY WORK SECTION ---------- */
+        .community {
+            background: var(--white);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .community-card {
+            background: var(--gray-50);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .community-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .community-icon {
+            width: 44px;
+            height: 44px;
+            background: #d1fae5;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+
+        .community-role {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .community-org {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #10b981;
+            margin-bottom: 4px;
+        }
+
+        .community-period {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+
+        .community-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- ACADEMIC RECORD SECTION ---------- */
+        .academics {
+            background: var(--gray-50);
+        }
+
+        .academic-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .summary-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .academic-year {
+            margin-bottom: 36px;
+        }
+
+        .academic-year:last-child {
+            margin-bottom: 0;
+        }
+
+        .academic-year-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .year-badge {
+            background: var(--primary-bg);
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .grades-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .grades-table thead {
+            background: var(--gray-50);
+        }
+
+        .grades-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .grades-table td {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .grades-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .grades-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .grade-hd {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .grade-d {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .grade-incomplete {
+            background: var(--gray-100);
+            color: var(--gray-500);
+        }
+
+        /* ---------- CONTACT SECTION ---------- */
+        .contact {
+            background: linear-gradient(165deg, #f0f5ff 0%, #e8eef8 40%, var(--gray-50) 100%);
+        }
+
+        .contact-intro {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            margin-bottom: 36px;
+            max-width: 500px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            padding: 14px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+        }
+
+        .contact-link:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-link svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ---------- MOBILE RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .academic-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grades-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .section-heading {
+                font-size: 1.7rem;
+                margin-bottom: 36px;
+            }
+
+            /* Mobile navigation */
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 16px 24px 24px;
+                gap: 0;
+                border-bottom: 1px solid var(--gray-200);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid var(--gray-100);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 0;
+                font-size: 1rem;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            /* Mobile hero */
+            .hero {
+                min-height: auto;
+                padding-top: 120px;
+                padding-bottom: 64px;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 32px;
+            }
+
+            .hero-photo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                text-align: center;
+                justify-content: center;
+            }
+
+            /* Mobile timeline */
+            .timeline {
+                padding-left: 28px;
+            }
+
+            .timeline-item::before {
+                left: -28px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            /* Mobile contact */
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .project-card {
+                padding: 24px;
+            }
+
+            .timeline-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#hero" class="nav-logo">Isa<span>.</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#academics">Grades</a></li>
+                <li><a href="#achievements">Awards</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-label">Open to Internship Opportunities</span>
+                <h1 class="hero-name">Isa Shahid</h1>
+                <p class="hero-tagline">CS Student at Monash | Aspiring Strategy & Technology Consultant</p>
+                <p class="hero-subtitle">Translating technical problems into business solutions</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Get in Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <img src="Certificates/image.png" alt="Isa Shahid" class="hero-photo">
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-heading fade-in">About Me</h2>
+            <p class="about-text fade-in">
+                Computer Science student at Monash with a growing interest in consulting. I've spent the last few years in roles that look different on paper - retail operations, tutoring kids to code, coordinating events, tech support - but they all came down to the same thing: figuring out what's actually going wrong, working with people to fix it, and communicating clearly along the way. That's what draws me to consulting. I like breaking down messy problems, and I like that the work sits at the intersection of business and technology. Currently looking for internship opportunities where I can learn from experienced consultants and contribute to meaningful projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-heading fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: CodeProof -->
+                <div class="project-card fade-in">
+                    <h3 class="project-title">CodeProof - VS Code Extension for Code Authenticity</h3>
+                    <p class="project-desc">
+                        Built a free, open-source VS Code extension that solves academic integrity challenges. Records timestamped coding snapshots with cryptographic hash chaining to prove authorship. Features AI-powered development narratives via Gemini, smart plagiarism detection, and video-like code replay. All data stays local, no subscriptions.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">Gemini API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/isashahid10/codeproof" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://codeproof.netlify.app" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Catalyst PK -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">Top Performing Submission</span>
+                    <h3 class="project-title">Catalyst PK - Consulting Project with Pakistan Innovation Foundation</h3>
+                    <p class="project-desc">
+                        Designed an innovation funding and incubation initiative for early-stage startups in Pakistan. Interviewed 25+ stakeholders, benchmarked 12 international programs, analyzed 500+ data points. Built milestone-based funding model, financial projections, and 12-month implementation roadmap. Submission recognized as top-performing and approved for implementation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Strategic Planning</span>
+                        <span class="tech-tag">Financial Modeling</span>
+                        <span class="tech-tag">Stakeholder Research</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: CSV Insight Pro -->
+                <div class="project-card fade-in">
+                    <h3 class="project-title">CSV Insight Pro - Data Visualization Tool</h3>
+                    <p class="project-desc">
+                        Browser-based analytics tool that transforms raw CSV data into executive-ready reports. Built with Python and Streamlit to help non-technical stakeholders extract insights without coding. Auto-generates statistical summaries, visualizations, and downloadable reports.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <h2 class="section-heading fade-in">Relevant Experience</h2>
+            <div class="timeline">
+
+                <!-- Experience 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Client Solutions & Operations Analyst</div>
+                                <div class="timeline-company">Global Fitness and Leisure</div>
+                            </div>
+                            <span class="timeline-period">Jul 2025 - Present</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Handle 40+ customer issues weekly across NetSuite, eBay, and Amazon platforms</li>
+                            <li>Track patterns in complaints and returns, present insights to weekly sales meetings</li>
+                            <li>Identified product issues and customer drop-off points to improve operations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Consulting Intern</div>
+                                <div class="timeline-company">Pakistan Innovation Foundation - Catalyst PK Programme</div>
+                            </div>
+                            <span class="timeline-period">Dec 2025 - Jan 2026</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Designed innovation funding framework for Pakistan's startup ecosystem</li>
+                            <li>Conducted stakeholder interviews and international program benchmarking</li>
+                            <li>Built milestone-based funding model with 4-stage disbursement system</li>
+                            <li>Top-performing submission approved for implementation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Education Consultant & Program Facilitator</div>
+                                <div class="timeline-company">CodeCamp</div>
+                            </div>
+                            <span class="timeline-period">Jun 2025 - Present</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Teach Python, game design, and robotics to students aged 7-16</li>
+                            <li>Adapt teaching methods to different learning styles and skill levels</li>
+                            <li>Developed skills in explaining technical concepts in simple terms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Event Coordinator</div>
+                                <div class="timeline-company">SalamFest</div>
+                            </div>
+                            <span class="timeline-period">2025</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Coordinated logistics for one of Melbourne's largest Islamic cultural festivals</li>
+                            <li>Managed 25+ vendors and 500+ volunteers across weekend event</li>
+                            <li>Handled real-time problem solving and crowd flow management</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <h2 class="section-heading fade-in">Skills</h2>
+            <div class="skills-grid">
+
+                <!-- Technical Skills -->
+                <div class="skills-category fade-in">
+                    <div class="skills-category-title">
+                        <div class="skills-category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        Technical
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">NetSuite</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">VS Code Extension API</span>
+                    </div>
+                </div>
+
+                <!-- Consulting & Business Skills -->
+                <div class="skills-category fade-in">
+                    <div class="skills-category-title">
+                        <div class="skills-category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        </div>
+                        Consulting & Business
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">Stakeholder Management</span>
+                        <span class="skill-tag">Market Research</span>
+                        <span class="skill-tag">Process Optimization</span>
+                        <span class="skill-tag">Client Communication</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skills-category fade-in">
+                    <div class="skills-category-title">
+                        <div class="skills-category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        Soft Skills
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Cross-functional Collaboration</span>
+                        <span class="skill-tag">Teaching & Mentoring</span>
+                        <span class="skill-tag">Project Coordination</span>
+                        <span class="skill-tag">Event Management</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ACHIEVEMENTS SECTION ==================== -->
+    <section class="section achievements" id="achievements">
+        <div class="container">
+            <h2 class="section-heading fade-in">Honors & Awards</h2>
+            <div class="achievements-grid">
+
+                <!-- Achievement 1 -->
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">&#127942;</div>
+                    <h3 class="achievement-title">Runner-Up - IIUI National Case Competition</h3>
+                    <div class="achievement-date">December 2025</div>
+                    <p class="achievement-desc">
+                        Competed in 48-hour case competition. Developed growth and cost-optimization strategy projecting 25% revenue growth and margin improvement from 8% to 15%. Recognized for balancing revenue growth with operational efficiency.
+                    </p>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">&#127775;</div>
+                    <h3 class="achievement-title">Top Performing Submission - Catalyst PK</h3>
+                    <div class="achievement-date">January 2026</div>
+                    <p class="achievement-desc">
+                        Innovation funding framework approved for implementation. Designed program targeting 20 startups in year one with potential to unlock PKR 200M in follow-on funding.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CERTIFICATES SECTION ==================== -->
+    <section class="section certificates" id="certificates">
+        <div class="container">
+            <h2 class="section-heading fade-in">Certificates</h2>
+            <div class="certificates-grid">
+
+                <!-- Certificate 1: Catalyst PK -->
+                <div class="certificate-card fade-in">
+                    <img src="Certificates/Catalyst PK Innovation Initiative – Certificate of Completion .jpeg" alt="Catalyst PK Innovation Initiative Certificate" class="certificate-img" onclick="openLightbox(this.src)">
+                    <div class="certificate-info">
+                        <h3 class="certificate-title">Catalyst PK Innovation Initiative</h3>
+                        <div class="certificate-org">Pakistan Innovation Foundation</div>
+                        <div class="certificate-date">Dec 2025 - Jan 2026</div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2: IIUI Case Competition -->
+                <div class="certificate-card fade-in">
+                    <img src="Certificates/IIIU.jpeg" alt="IIUI National Case Competition Runner-Up Certificate" class="certificate-img" onclick="openLightbox(this.src)">
+                    <div class="certificate-info">
+                        <h3 class="certificate-title">IIUI National Case Competition - Runner-Up</h3>
+                        <div class="certificate-org">Ibadat International University</div>
+                        <div class="certificate-date">December 2025</div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3: Qadam Barho -->
+                <div class="certificate-card fade-in">
+                    <img src="Certificates/Screenshot 2026-02-18 at 1.02.26 pm.png" alt="Qadam Barho Consultancy Project Certificate" class="certificate-img" onclick="openLightbox(this.src)">
+                    <div class="certificate-info">
+                        <h3 class="certificate-title">"Qadam Barho" - Student Retention Analysis</h3>
+                        <div class="certificate-org">University of Lahore</div>
+                        <div class="certificate-date">Aug 2024 - Dec 2024</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for certificate images -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Certificate full view" id="lightboxImg">
+    </div>
+
+    <!-- ==================== COMMUNITY WORK SECTION ==================== -->
+    <section class="section community" id="community">
+        <div class="container">
+            <h2 class="section-heading fade-in">Community Work</h2>
+            <div class="community-grid">
+
+                <!-- Community 1: Code for Pakistan -->
+                <div class="community-card fade-in">
+                    <div class="community-icon">&#128187;</div>
+                    <h3 class="community-role">Community Tech Educator</h3>
+                    <div class="community-org">Code for Pakistan</div>
+                    <div class="community-period">Feb 2023 - Dec 2023 &middot; 11 mos</div>
+                    <p class="community-desc">
+                        Delivered weekly Python and data literacy workshops to underserved youth, applying structured teaching methodologies to build foundational problem-solving skills. Designed curriculum modules balancing technical content with real-world applications. Assessed student progress and adapted instruction based on individual learning gaps. Contributed to the organization's mission of democratizing access to technology education.
+                    </p>
+                </div>
+
+                <!-- Community 2: Edhi Foundation -->
+                <div class="community-card fade-in">
+                    <div class="community-icon">&#129309;</div>
+                    <h3 class="community-role">Disaster Relief Volunteer</h3>
+                    <div class="community-org">Edhi Foundation</div>
+                    <div class="community-period">Aug 2022 - Dec 2022 &middot; 5 mos</div>
+                    <p class="community-desc">
+                        Supported logistics coordination during 2022 flood relief operations, working under high-pressure conditions to deliver aid to displaced communities. Managed supply chain operations for food, water, and medical resources across distribution points. Collaborated with local teams to assess community needs and prioritize resource allocation. Documented operational gaps to inform future disaster response planning.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ACADEMIC RECORD SECTION ==================== -->
+    <section class="section academics" id="academics">
+        <div class="container">
+            <h2 class="section-heading fade-in">Academic Record</h2>
+
+            <!-- Summary Cards -->
+            <div class="academic-summary fade-in">
+                <div class="summary-card">
+                    <div class="summary-value">3.750</div>
+                    <div class="summary-label">GPA</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-value">82.6</div>
+                    <div class="summary-label">WAM (Weighted Average Mark)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-value">5/8</div>
+                    <div class="summary-label">High Distinctions (Year 1)</div>
+                </div>
+            </div>
+
+            <p class="about-text fade-in" style="margin-bottom: 36px; font-size: 0.95rem;">
+                Bachelor of Computer Science (C2001) &mdash; Monash University<br>
+                Specialisation: Algorithms and Software
+            </p>
+
+            <!-- Year 1 -->
+            <div class="academic-year fade-in">
+                <div class="academic-year-title">
+                    First Year (2025)
+                    <span class="year-badge">Completed</span>
+                </div>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Unit Code</th>
+                            <th>Unit Title</th>
+                            <th>Semester</th>
+                            <th>Mark</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FIT1045</td>
+                            <td>Introduction to Programming</td>
+                            <td>S1</td>
+                            <td>71</td>
+                            <td><span class="grade-badge grade-d">D</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1047</td>
+                            <td>Introduction to Computer Systems, Networks and Security</td>
+                            <td>S1</td>
+                            <td>84</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1057</td>
+                            <td>Introduction to Cybersecurity</td>
+                            <td>S1</td>
+                            <td>88</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1058</td>
+                            <td>Foundations of Computing</td>
+                            <td>S1</td>
+                            <td>75</td>
+                            <td><span class="grade-badge grade-d">D</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1008</td>
+                            <td>Fundamentals of Algorithms</td>
+                            <td>S2</td>
+                            <td>80</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1049</td>
+                            <td>IT Professional Practice</td>
+                            <td>S2</td>
+                            <td>84</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT1093</td>
+                            <td>Cybersecurity Tools and Techniques</td>
+                            <td>S2</td>
+                            <td>89</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2095</td>
+                            <td>Full Stack Development</td>
+                            <td>S2</td>
+                            <td>86</td>
+                            <td><span class="grade-badge grade-hd">HD</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Year 2 -->
+            <div class="academic-year fade-in">
+                <div class="academic-year-title">
+                    Second Year (2026)
+                    <span class="year-badge">In Progress</span>
+                </div>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Unit Code</th>
+                            <th>Unit Title</th>
+                            <th>Semester</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FIT1073</td>
+                            <td>Game Design</td>
+                            <td>S1</td>
+                            <td><span class="grade-badge grade-incomplete">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2004</td>
+                            <td>Algorithms and Data Structures</td>
+                            <td>S1</td>
+                            <td><span class="grade-badge grade-incomplete">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2099</td>
+                            <td>Object Oriented Design and Implementation</td>
+                            <td>S1</td>
+                            <td><span class="grade-badge grade-incomplete">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2108</td>
+                            <td>Industry Based Learning Seminar</td>
+                            <td>S1</td>
+                            <td><span class="grade-badge grade-incomplete">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2173</td>
+                            <td>Software Security</td>
+                            <td>S1</td>
+                            <td><span class="grade-badge grade-incomplete">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>ECF1100</td>
+                            <td>Microeconomics</td>
+                            <td>S2</td>
+                            <td><span class="grade-badge grade-incomplete">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2102</td>
+                            <td>Programming Paradigms</td>
+                            <td>S2</td>
+                            <td><span class="grade-badge grade-incomplete">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>FIT2109</td>
+                            <td>Computer Science Workshop</td>
+                            <td>S2</td>
+                            <td><span class="grade-badge grade-incomplete">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>MKC1200</td>
+                            <td>Principles of Marketing</td>
+                            <td>S2</td>
+                            <td><span class="grade-badge grade-incomplete">Upcoming</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-heading fade-in">Let's Connect</h2>
+            <p class="contact-intro fade-in">I'm actively seeking consulting internship opportunities. Feel free to reach out.</p>
+            <div class="contact-links fade-in">
+                <a href="mailto:isashahid100@outlook.com" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    isashahid100@outlook.com
+                </a>
+                <a href="https://linkedin.com/in/isashahid" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/isashahid10" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>Isa Shahid &copy; 2026. Built with purpose.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        /* ---------- Mobile Navigation Toggle ---------- */
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        /* ---------- Active Navigation Highlighting ---------- */
+        const sections = document.querySelectorAll('section[id]');
+        const navAnchors = document.querySelectorAll('.nav-links a');
+
+        function updateActiveNav() {
+            const scrollPos = window.scrollY + 120;
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+
+                if (scrollPos >= top && scrollPos < top + height) {
+                    navAnchors.forEach(a => a.classList.remove('active'));
+                    const activeLink = document.querySelector('.nav-links a[href="#' + id + '"]');
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        /* ---------- Scroll-triggered Fade In Animations ---------- */
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        /* ---------- Certificate Lightbox ---------- */
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+</body>
+</html>
