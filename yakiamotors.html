@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yakiamotors - A Product Management Case Study by Isa Shahid. From AUD $3,200 in borrowed capital to a 10x return.">
+    <title>Yakiamotors Case Study | Isa Shahid</title>
+
+    <!-- ==================== FONTS ==================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ==================== STYLES ==================== -->
+    <style>
+        /* ---------- CSS RESET & BASE ---------- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --green: #10b981;
+            --green-bg: #d1fae5;
+            --green-dark: #065f46;
+            --red: #ef4444;
+            --red-bg: #fee2e2;
+            --red-dark: #991b1b;
+            --amber: #f59e0b;
+            --amber-bg: #fef3c7;
+            --amber-dark: #92400e;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ---------- UTILITY CLASSES ---------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 48px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* ---------- SCROLL ANIMATIONS ---------- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .nav-back:hover {
+            color: var(--primary);
+        }
+
+        .nav-back svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .case-hero {
+            padding-top: 128px;
+            padding-bottom: 64px;
+            background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .case-hero-label {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            color: #93c5fd;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .case-hero-title {
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .case-hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #94a3b8;
+            font-weight: 400;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* ---------- STAT CARDS ---------- */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .stat-value.blue { color: #60a5fa; }
+        .stat-value.green { color: #34d399; }
+        .stat-value.amber { color: #fbbf24; }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .stat-sublabel {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* ---------- CONTENT SECTIONS ---------- */
+        .case-section {
+            padding: 80px 0;
+        }
+
+        .case-section:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        .case-section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .case-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .case-section-subtitle {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+            margin-top: 16px;
+        }
+
+        .case-text {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: var(--gray-600);
+            max-width: 780px;
+            margin-bottom: 28px;
+        }
+
+        /* ---------- INFO CARDS ---------- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-card-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .info-card-text {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- ROLES TABLE ---------- */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .role-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .role-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .role-desc {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- FLYWHEEL ---------- */
+        .flywheel {
+            display: flex;
+            gap: 0;
+            margin: 32px 0;
+            overflow-x: auto;
+        }
+
+        .flywheel-step {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px 12px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--white);
+            background: var(--primary);
+            position: relative;
+        }
+
+        .flywheel-step:first-child {
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+        }
+
+        .flywheel-step:last-child {
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            background: var(--primary-dark);
+        }
+
+        .flywheel-step:nth-child(even) {
+            background: var(--primary-light);
+        }
+
+        /* ---------- MARGIN BARS ---------- */
+        .margin-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 28px;
+        }
+
+        .margin-table thead {
+            background: var(--gray-50);
+        }
+
+        .margin-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .margin-table td {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .margin-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .margin-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .bar-cell {
+            width: 40%;
+        }
+
+        .bar-wrap {
+            background: var(--gray-100);
+            border-radius: 100px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: width 1s ease;
+        }
+
+        .bar-fill.green { background: linear-gradient(90deg, #10b981, #34d399); }
+        .bar-fill.blue { background: linear-gradient(90deg, #2563eb, #3b82f6); }
+        .bar-fill.red { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+        .metric-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .metric-positive { background: var(--green-bg); color: var(--green-dark); }
+        .metric-negative { background: var(--red-bg); color: var(--red-dark); }
+        .metric-exception { background: var(--amber-bg); color: var(--amber-dark); }
+
+        /* ---------- BML CYCLES ---------- */
+        .bml-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 28px;
+        }
+
+        .bml-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .bml-header {
+            padding: 20px 28px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .bml-header.launch { background: #2563eb; }
+        .bml-header.overreach { background: #ef4444; }
+        .bml-header.discipline { background: #10b981; }
+
+        .bml-body {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .bml-cell {
+            padding: 24px;
+            border-right: 1px solid var(--gray-100);
+        }
+
+        .bml-cell:last-child {
+            border-right: none;
+        }
+
+        .bml-cell-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .bml-cell-title.build { color: #2563eb; }
+        .bml-cell-title.measure { color: #f59e0b; }
+        .bml-cell-title.learn { color: #10b981; }
+
+        .bml-cell-text {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- METRICS HIGHLIGHT ---------- */
+        .metrics-highlight {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .metric-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .metric-value.green-text { color: var(--green); }
+        .metric-value.amber-text { color: var(--amber); }
+
+        .metric-label {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .metric-sublabel {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            margin-top: 2px;
+        }
+
+        /* ---------- FULL METRICS TABLE ---------- */
+        .metrics-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .metrics-table th {
+            padding: 12px 20px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--gray-50);
+        }
+
+        .metrics-table td {
+            padding: 14px 20px;
+            font-size: 0.92rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .metrics-table td:first-child {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .metrics-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .metrics-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        /* ---------- DECISION CARDS ---------- */
+        .decisions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .decision-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            border-left: 4px solid;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .decision-card:nth-child(1) { border-left-color: #2563eb; }
+        .decision-card:nth-child(2) { border-left-color: #8b5cf6; }
+        .decision-card:nth-child(3) { border-left-color: #ef4444; }
+        .decision-card:nth-child(4) { border-left-color: #10b981; }
+        .decision-card:nth-child(5) { border-left-color: #f59e0b; }
+
+        .decision-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .decision-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .decision-learning {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ---------- ROADMAP ---------- */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .roadmap-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .roadmap-card:nth-child(1)::before { background: #10b981; }
+        .roadmap-card:nth-child(2)::before { background: #2563eb; }
+        .roadmap-card:nth-child(3)::before { background: #8b5cf6; }
+
+        .roadmap-phase {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 14px;
+        }
+
+        .roadmap-card:nth-child(1) .roadmap-phase { background: var(--green-bg); color: var(--green-dark); }
+        .roadmap-card:nth-child(2) .roadmap-phase { background: var(--primary-bg); color: var(--primary); }
+        .roadmap-card:nth-child(3) .roadmap-phase { background: #ede9fe; color: #5b21b6; }
+
+        .roadmap-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .roadmap-text {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .roadmap-metric {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ---------- RICE TABLE ---------- */
+        .rice-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 28px;
+        }
+
+        .rice-table thead {
+            background: var(--gray-50);
+        }
+
+        .rice-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .rice-table td {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .rice-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rice-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .rice-score {
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* ---------- FEATURE SPECS ---------- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .feature-priority {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .feature-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* ---------- JTBD TABLE ---------- */
+        .jtbd-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .jtbd-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .jtbd-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .jtbd-type {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 4px;
+            margin-top: 12px;
+        }
+
+        .jtbd-type:first-of-type {
+            margin-top: 0;
+        }
+
+        .jtbd-text {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            font-style: italic;
+        }
+
+        /* ---------- IMPORT ANALYSIS ---------- */
+        .import-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 28px;
+        }
+
+        .import-table thead {
+            background: var(--gray-50);
+        }
+
+        .import-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .import-table td {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .import-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .import-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .import-table td:first-child {
+            font-weight: 600;
+        }
+
+        /* ---------- MARKET SIZING TABLE ---------- */
+        .market-table {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 28px;
+        }
+
+        .market-table thead { background: var(--gray-50); }
+
+        .market-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .market-table td {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .market-table tbody tr:last-child td { border-bottom: none; }
+        .market-table tbody tr:hover { background: var(--gray-50); }
+        .market-table td:first-child { font-weight: 600; color: var(--gray-900); }
+
+        /* ---------- DOWNLOAD GATE ---------- */
+        .download-gate {
+            background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .download-gate-inner {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .download-gate-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .download-gate-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #60a5fa;
+        }
+
+        .download-gate-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .download-gate-text {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .download-gate-notice {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .download-gate-notice-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-gate-notice-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 1.5px solid var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* ---------- CLOSING ---------- */
+        .case-closing {
+            background: var(--gray-50);
+            padding: 64px 0;
+            text-align: center;
+        }
+
+        .case-closing-tagline {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .case-closing-subtitle {
+            font-size: 1rem;
+            color: var(--primary);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--white);
+        }
+
+        /* ---------- MODAL ---------- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 36px 36px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: all var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .modal-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--amber-bg);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--amber-dark);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .modal-text {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .modal-notice {
+            background: var(--amber-bg);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            font-size: 0.85rem;
+            color: var(--amber-dark);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            border-left: 3px solid var(--amber);
+        }
+
+        .modal-label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .modal-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-family: inherit;
+            color: var(--gray-700);
+            background: var(--white);
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            transition: border-color var(--transition);
+            margin-bottom: 20px;
+        }
+
+        .modal-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .modal-checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .modal-checkbox {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .modal-checkbox-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .modal-download-btn {
+            width: 100%;
+            justify-content: center;
+            transition: all var(--transition);
+        }
+
+        .modal-download-btn:disabled {
+            background: var(--gray-300);
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .modal-download-btn:disabled:hover {
+            background: var(--gray-300);
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* ---------- MOBILE RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .stats-row,
+            .info-grid,
+            .roles-grid,
+            .roadmap-grid,
+            .metrics-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .jtbd-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bml-body {
+                grid-template-columns: 1fr;
+            }
+
+            .bml-cell {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-100);
+            }
+
+            .bml-cell:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-hero {
+                padding-top: 100px;
+                padding-bottom: 48px;
+            }
+
+            .case-section {
+                padding: 56px 0;
+            }
+
+            .case-section-title {
+                font-size: 1.35rem;
+            }
+
+            .margin-table,
+            .metrics-table,
+            .rice-table,
+            .import-table,
+            .market-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .flywheel {
+                flex-wrap: wrap;
+            }
+
+            .flywheel-step {
+                flex: none;
+                width: calc(33.33% - 0px);
+                border-radius: 0;
+            }
+
+            .flywheel-step:first-child { border-radius: var(--radius-sm) 0 0 0; }
+            .flywheel-step:nth-child(3) { border-radius: 0 var(--radius-sm) 0 0; }
+            .flywheel-step:nth-child(4) { border-radius: 0 0 0 var(--radius-sm); }
+            .flywheel-step:last-child { border-radius: 0 0 var(--radius-sm) 0; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">Isa<span>.</span></a>
+            <a href="index.html#projects" class="nav-back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="case-hero">
+        <div class="container">
+            <span class="case-hero-label">Product Management Case Study</span>
+            <h1 class="case-hero-title">YAKIAMOTORS</h1>
+            <p class="case-hero-subtitle">From AUD $3,200 in borrowed capital to a 10x return. A bootstrapped vehicle arbitrage business built by three university students.</p>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-value blue">$3,200</div>
+                    <div class="stat-label">Initial Capital</div>
+                    <div class="stat-sublabel">Pooled + borrowed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value green">~$38K</div>
+                    <div class="stat-label">Current Capital Base</div>
+                    <div class="stat-sublabel">100% reinvested</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value amber">35+</div>
+                    <div class="stat-label">Vehicles Flipped</div>
+                    <div class="stat-sublabel">Avg. 2-3.5 wk hold</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXECUTIVE SUMMARY ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Executive Summary</h2>
+            <p class="case-section-subtitle fade-in">The story of building a business out of necessity, not a business plan.</p>
+
+            <p class="case-text fade-in">
+                Yakiamotors is a bootstrapped vehicle arbitrage business founded in mid-2025 by three university students - Isa, Abdullah, and Yaseen - with AUD $3,200 in pooled capital, a significant portion of which was borrowed from friends and family. The business was born not from a business plan, but from a genuine problem: a co-founder facing financial hardship, and a team that decided to build their way out of it.
+            </p>
+            <p class="case-text fade-in">
+                In under a year, the team completed 35+ vehicle flips, generated over AUD $35,000 in gross revenue, and grew the capital base to approximately $38,000 - a 10x+ return on initial capital, with zero external investors and zero profit extracted. Operating across Facebook Marketplace, Pickles auctions, and targeted Facebook groups, Yakiamotors buys undervalued used cars, performs cosmetic repairs, and resells at 20-65% margins with average holding periods of two to three and a half weeks.
+            </p>
+            <p class="case-text fade-in">
+                The business now approaches a strategic inflection point: acquiring a dealer license to remove the VicRoads 4-car-per-year cap and unlock wholesale auction access. The next horizon is Japanese import arbitrage, leveraging the Australia-Japan FTA and a weakening yen to source low-mileage vehicles at significant discounts to Australian market value.
+            </p>
+
+            <div class="metrics-highlight fade-in">
+                <div class="metric-card">
+                    <div class="metric-value">10x+</div>
+                    <div class="metric-label">Capital Multiplier</div>
+                    <div class="metric-sublabel">$3.2K to $38K</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value green-text">$35K+</div>
+                    <div class="metric-label">Gross Revenue</div>
+                    <div class="metric-sublabel">All reinvested</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value amber-text">20-65%</div>
+                    <div class="metric-label">Avg. Margin</div>
+                    <div class="metric-sublabel">On purchase price</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PROBLEM & MARKET ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Problem &amp; Market Opportunity</h2>
+            <p class="case-section-subtitle fade-in">A deeply inefficient market with a reliable arbitrage gap.</p>
+
+            <p class="case-text fade-in">
+                The Australian used car market is deeply inefficient. Private sellers consistently underprice vehicles due to urgency (relocation, financial pressure, job changes), limited market knowledge, and a desire for fast, low-friction sales. Simultaneously, dealerships move slowly and carry high overheads. The arbitrage gap between what a motivated private seller accepts and what the market will pay is reliably 20-65% per vehicle.
+            </p>
+            <p class="case-text fade-in">
+                This inefficiency is most pronounced in the $4,000-$12,000 segment: reliable Japanese-make city cars (Honda Jazz, Toyota Yaris) favoured by students, international workers, and first-time buyers. These buyers want a serviced, photo-ready car quickly. Yakiamotors fills that gap.
+            </p>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 40px; margin-bottom: 4px;" class="fade-in">Market Sizing</h3>
+            <table class="market-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Segment</th>
+                        <th>Estimate</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TAM - Total Australian Used Car Market</td>
+                        <td>~$35B AUD annually</td>
+                        <td>IbisWorld; 1M+ private sales p.a.</td>
+                    </tr>
+                    <tr>
+                        <td>SAM - Sub-$15K Segment, Victoria</td>
+                        <td>~$3.2B AUD annually</td>
+                        <td>Est. 30% of national market</td>
+                    </tr>
+                    <tr>
+                        <td>SOM - Melbourne Metro, Flip-Grade Cars</td>
+                        <td>~$80-120M AUD annually</td>
+                        <td>Est. 40K flip-grade cars at avg. $2.5K margin</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 40px; margin-bottom: 4px;" class="fade-in">Jobs to Be Done</h3>
+            <div class="jtbd-grid fade-in">
+                <div class="jtbd-card">
+                    <div class="jtbd-card-title">Sellers</div>
+                    <div class="jtbd-type">Functional Job</div>
+                    <div class="jtbd-text">Turn this car into cash today with minimal friction</div>
+                    <div class="jtbd-type">Emotional Job</div>
+                    <div class="jtbd-text">Relief from a stressful asset</div>
+                </div>
+                <div class="jtbd-card">
+                    <div class="jtbd-card-title">Buyers</div>
+                    <div class="jtbd-type">Functional Job</div>
+                    <div class="jtbd-text">Get a reliable car under $10K without weeks of research</div>
+                    <div class="jtbd-type">Emotional Job</div>
+                    <div class="jtbd-text">Confidence in the purchase decision</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOLUTION & BUSINESS MODEL ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Solution &amp; Business Model</h2>
+            <p class="case-section-subtitle fade-in">Three equal partners. Three distinct roles. One flywheel.</p>
+
+            <div class="roles-grid fade-in">
+                <div class="role-card">
+                    <div class="role-name">Isa</div>
+                    <div class="role-desc">Finance, accounting, paperwork, pricing strategy, deal structuring</div>
+                </div>
+                <div class="role-card">
+                    <div class="role-name">Abdullah</div>
+                    <div class="role-desc">Deal sourcing - monitors Facebook Marketplace, Pickles auctions, and FB groups, identifies underpriced listings within minutes of posting</div>
+                </div>
+                <div class="role-card">
+                    <div class="role-name">Yaseen</div>
+                    <div class="role-desc">Operations and logistics - physical inspections, test drives, engine checks, pickups, repair coordination</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 40px; margin-bottom: 16px;" class="fade-in">The Deal Flywheel</h3>
+            <div class="flywheel fade-in">
+                <div class="flywheel-step">SOURCE</div>
+                <div class="flywheel-step">EVALUATE</div>
+                <div class="flywheel-step">ACQUIRE</div>
+                <div class="flywheel-step">REPAIR</div>
+                <div class="flywheel-step">MARKET</div>
+                <div class="flywheel-step">SELL + REINVEST</div>
+            </div>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 40px; margin-bottom: 4px;" class="fade-in">Profit Margin by Vehicle Type</h3>
+            <table class="margin-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Vehicle Type</th>
+                        <th class="bar-cell">Performance</th>
+                        <th>Metric</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Honda Jazz</td>
+                        <td class="bar-cell">
+                            <div class="bar-wrap"><div class="bar-fill green" style="width: 95%;">95%</div></div>
+                        </td>
+                        <td><span class="metric-badge metric-positive">Avg. 45-65% margin</span></td>
+                    </tr>
+                    <tr>
+                        <td>Toyota Yaris</td>
+                        <td class="bar-cell">
+                            <div class="bar-wrap"><div class="bar-fill green" style="width: 88%;">88%</div></div>
+                        </td>
+                        <td><span class="metric-badge metric-positive">Avg. 35-55% margin</span></td>
+                    </tr>
+                    <tr>
+                        <td>BMW E90 (exception)</td>
+                        <td class="bar-cell">
+                            <div class="bar-wrap"><div class="bar-fill blue" style="width: 100%;">133%</div></div>
+                        </td>
+                        <td><span class="metric-badge metric-exception">133% ROI on best flip</span></td>
+                    </tr>
+                    <tr>
+                        <td>BMW 5/7 Series (high mileage)</td>
+                        <td class="bar-cell">
+                            <div class="bar-wrap"><div class="bar-fill red" style="width: 20%;">20%</div></div>
+                        </td>
+                        <td><span class="metric-badge metric-negative">Avg. -18% (losses)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.82rem; color: var(--gray-500); margin-top: 10px; font-style: italic;" class="fade-in">
+                Note: BMW E90 was an exception purchased at 76,000 km - far below typical high-mileage German stock. The bar reflects that deal's exceptional ROI, not the category average.
+            </p>
+        </div>
+    </div>
+
+    <!-- ==================== BUILD-MEASURE-LEARN ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">MVP &amp; Iteration History</h2>
+            <p class="case-section-subtitle fade-in">Three Build-Measure-Learn cycles, each triggered by a constraint or failure.</p>
+
+            <div class="bml-grid">
+                <!-- Cycle 1 -->
+                <div class="bml-card fade-in">
+                    <div class="bml-header launch">Cycle 1 - Launch</div>
+                    <div class="bml-body">
+                        <div class="bml-cell">
+                            <div class="bml-cell-title build">Build</div>
+                            <div class="bml-cell-text">Pool $3,200 (partly borrowed). Buy a single car - 2003 Mercedes A200 with rear dent, sourced from Facebook Marketplace. No formal process, pure instinct under urgency.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title measure">Measure</div>
+                            <div class="bml-cell-text">Sold at $300-400 profit. All friend loans repaid within one week. Capital was whole plus margin.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title learn">Learn</div>
+                            <div class="bml-cell-text">Speed beats perfect information. The 4-hour Honda Jazz flip later proved this: bought, bumper replaced at wrecker, sold to buyer who came to the wrecker. Decisiveness is a competitive edge.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cycle 2 -->
+                <div class="bml-card fade-in">
+                    <div class="bml-header overreach">Cycle 2 - Overreach</div>
+                    <div class="bml-body">
+                        <div class="bml-cell">
+                            <div class="bml-cell-title build">Build</div>
+                            <div class="bml-cell-text">Tested the hypothesis that premium-brand vehicles (BMW 5 and 7 Series) would command a price premium sufficient to offset higher acquisition costs. Two BMWs purchased.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title measure">Measure</div>
+                            <div class="bml-cell-text">BMW 1: $3,500 buy, $2,800 sell, $1,200 total loss (inc. repairs). BMW 2: $4,000 buy, $3,350 sell, $800 loss. Combined: $2,000 in losses.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title learn">Learn</div>
+                            <div class="bml-cell-text">Product-market fit applies to cars too. The $4K-$8K buyer wants reliability, not brand prestige. High-mileage German cars carry perception risk that kills demand in this bracket.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cycle 3 -->
+                <div class="bml-card fade-in">
+                    <div class="bml-header discipline">Cycle 3 - Discipline</div>
+                    <div class="bml-body">
+                        <div class="bml-cell">
+                            <div class="bml-cell-title build">Build</div>
+                            <div class="bml-cell-text">Pivoted entirely to Japanese-make city cars. Established hard criteria: under 130K km, cosmetic damage preferred, oil leaks as hard no. Added $200 standard service to every purchase.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title measure">Measure</div>
+                            <div class="bml-cell-text">35+ flips completed. Avg. margin 20-65%. Best flip: BMW E90 (only 76K km), $3K buy, $7K sell. Capital base grew from $3,200 to approx. $38,000.</div>
+                        </div>
+                        <div class="bml-cell">
+                            <div class="bml-cell-title learn">Learn</div>
+                            <div class="bml-cell-text">The constraint is no longer capital - it is the VicRoads 4-car annual registration limit. The business has outgrown its operating structure. The next move is structural, not operational.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== METRICS ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Metrics &amp; Results</h2>
+            <p class="case-section-subtitle fade-in">The numbers behind 35+ flips in under a year.</p>
+
+            <div class="metrics-highlight fade-in">
+                <div class="metric-card">
+                    <div class="metric-value">10x+</div>
+                    <div class="metric-label">Capital Multiplier</div>
+                    <div class="metric-sublabel">$3.2K starting capital</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value green-text">35+</div>
+                    <div class="metric-label">Cars Flipped</div>
+                    <div class="metric-sublabel">Semester 2, 2025 to now</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value amber-text">4 hrs</div>
+                    <div class="metric-label">Fastest Flip</div>
+                    <div class="metric-sublabel">Honda Jazz, buy $4.85K sell $7K</div>
+                </div>
+            </div>
+
+            <table class="metrics-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Starting Capital</td><td>AUD $3,200 (partly borrowed from friends and family)</td></tr>
+                    <tr><td>Current Capital Base</td><td>~AUD $38,000 (cash + active inventory)</td></tr>
+                    <tr><td>Total Gross Revenue</td><td>$35,000+ AUD</td></tr>
+                    <tr><td>Cars Flipped</td><td>35+</td></tr>
+                    <tr><td>Average Buy Price</td><td>$4,000 - $6,000</td></tr>
+                    <tr><td>Average Sell Price</td><td>$6,500 - $12,000</td></tr>
+                    <tr><td>Average Margin</td><td>20-65% on purchase price</td></tr>
+                    <tr><td>Average Holding Period</td><td>2 - 3.5 weeks</td></tr>
+                    <tr><td>Best Single Flip (ROI)</td><td>BMW E90: $3K buy, $7K sell (133% return)</td></tr>
+                    <tr><td>Worst Outcomes</td><td>2 BMW losses, approx. $2,000 combined</td></tr>
+                    <tr><td>External Investors</td><td>None. Zero external funding.</td></tr>
+                    <tr><td>Profit Extracted by Founders</td><td>$0. 100% reinvested to date.</td></tr>
+                    <tr><td>Operating Constraint</td><td>VicRoads 4-car/year limit (pre-dealer license)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== KEY DECISIONS ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Key Decisions &amp; Learnings</h2>
+            <p class="case-section-subtitle fade-in">Five decisions that shaped the trajectory of the business.</p>
+
+            <div class="decisions-list">
+                <div class="decision-card fade-in">
+                    <div class="decision-title">Decision 1: Start with borrowed money</div>
+                    <div class="decision-text">No capital, borrowed from friends and family. The team bought the car anyway and repaid within the week.</div>
+                    <div class="decision-learning">The risk was real but bounded. The asymmetry was massive - worst case, owed friends money for two weeks. Best case, a business. Speed of decision-making under uncertainty is itself a competitive advantage.</div>
+                </div>
+                <div class="decision-card fade-in">
+                    <div class="decision-title">Decision 2: Refuse external debt to scale</div>
+                    <div class="decision-text">Abdullah proposed leveraging loans to acquire more inventory simultaneously. Isa pushed back. The team agreed: no external debt, compound organically.</div>
+                    <div class="decision-learning">Match leverage to operational certainty. Without a dealer license and consistent deal flow, leverage amplifies downside. The same decision revisited post-license may produce a different answer.</div>
+                </div>
+                <div class="decision-card fade-in">
+                    <div class="decision-title">Decision 3: Walk away from German cars (in the sub-$8K range)</div>
+                    <div class="decision-text">Two back-to-back losses on high-mileage BMWs totalling approx. $2,000. Decision: informal rule against German makes in the $3K-$8K bracket.</div>
+                    <div class="decision-learning">The $5K-$8K buyer's job-to-be-done is reliable, cheap-to-run transport - not brand prestige. The BMW E90 exception (76K km) proved the rule: it was the mileage, not the badge, that mattered.</div>
+                </div>
+                <div class="decision-card fade-in">
+                    <div class="decision-title">Decision 4: Invest $200 in servicing every acquired car</div>
+                    <div class="decision-text">Cars with no service history attract lower offers and take longer to sell. The team standardised a $200 service on every acquisition.</div>
+                    <div class="decision-learning">This is a pricing lever, not a cost. 'Recently serviced' justifies a $400+ asking price premium. A 2x return on a process investment that also reduces mechanical risk.</div>
+                </div>
+                <div class="decision-card fade-in">
+                    <div class="decision-title">Decision 5: Reinvest 100% of profit</div>
+                    <div class="decision-text">The business has generated $35K+ in revenue. Founders have extracted nothing.</div>
+                    <div class="decision-learning">When you know the next structural unlock (dealer license) will change the unit economics, preserving capital for that moment is more valuable than short-term extraction. Patience is the rarest form of business discipline.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ROADMAP ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">Product Roadmap</h2>
+            <p class="case-section-subtitle fade-in">Three distinct growth phases with clear unlock conditions.</p>
+
+            <div class="roadmap-grid fade-in">
+                <div class="roadmap-card">
+                    <span class="roadmap-phase">NOW / H1 2025</span>
+                    <div class="roadmap-title">Foundation</div>
+                    <div class="roadmap-text">Dealer license acquisition; current Honda Jazz (60K km) prep and sale; refine cosmetic repair SOP; dual-car inventory.</div>
+                    <div class="roadmap-metric">License approved; 2 simultaneous inventory slots</div>
+                </div>
+                <div class="roadmap-card">
+                    <span class="roadmap-phase">NEXT / H2 2025</span>
+                    <div class="roadmap-title">Scale</div>
+                    <div class="roadmap-text">Scale to 3-5 simultaneous inventory slots; Pickles and GraysOnline auction access; hire sourcing assistant.</div>
+                    <div class="roadmap-metric">$80K+ capital base; avg. hold period under 2 weeks</div>
+                </div>
+                <div class="roadmap-card">
+                    <span class="roadmap-phase">LATER / 2026</span>
+                    <div class="roadmap-title">Import Channel</div>
+                    <div class="roadmap-text">Launch Japanese import channel (RAV4, Camry); leverage AUS-Japan FTA and weak yen; explore inter-state sourcing.</div>
+                    <div class="roadmap-metric">First imported vehicle sold at $3K+ margin over domestic</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 48px; margin-bottom: 4px;" class="fade-in">Japanese Import Margin Analysis</h3>
+            <table class="import-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Cost Component</th>
+                        <th>Estimated Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Japan Purchase Price</td><td>~AUD $15,000</td></tr>
+                    <tr><td>Import + Shipping</td><td>~AUD $5,000</td></tr>
+                    <tr><td>Compliance + Rego</td><td>~AUD $2,000</td></tr>
+                    <tr><td style="font-weight: 800;">Total Cost</td><td style="font-weight: 800;">~AUD $22,000</td></tr>
+                    <tr><td style="color: var(--green);">Expected Sale Price</td><td style="color: var(--green); font-weight: 700;">~AUD $26,000-$28,000</td></tr>
+                    <tr><td style="color: var(--primary);">Gross Margin</td><td style="color: var(--primary); font-weight: 700;">~AUD $4,000-$6,000 per car</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== FLIPIQ ==================== -->
+    <div class="case-section">
+        <div class="container">
+            <h2 class="case-section-title fade-in">What I'd Build: FlipIQ</h2>
+            <p class="case-section-subtitle fade-in">The biggest pain point isn't capital or sourcing - it's the speed and quality of deal evaluation.</p>
+
+            <p class="case-text fade-in">
+                A car listed at 7am can be gone by 7:15am. The difference between a good business and a great one is whether the team can make a high-confidence buy/no-buy decision in under five minutes, from their phones, before anyone else does.
+            </p>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 40px; margin-bottom: 4px;" class="fade-in">RICE Prioritisation</h3>
+            <table class="rice-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Reach</th>
+                        <th>Impact</th>
+                        <th>Confidence</th>
+                        <th>Effort</th>
+                        <th>RICE Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Automated Listing Alerts</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>85%</td>
+                        <td>1</td>
+                        <td class="rice-score">229</td>
+                    </tr>
+                    <tr>
+                        <td>Carsales AMV Auto-Comparison</td>
+                        <td>8</td>
+                        <td>3</td>
+                        <td>85%</td>
+                        <td>2</td>
+                        <td class="rice-score">102</td>
+                    </tr>
+                    <tr>
+                        <td>Historical Flip Database</td>
+                        <td>7</td>
+                        <td>3</td>
+                        <td>90%</td>
+                        <td>2</td>
+                        <td class="rice-score">95</td>
+                    </tr>
+                    <tr>
+                        <td>Team Deal Pipeline</td>
+                        <td>9</td>
+                        <td>2</td>
+                        <td>90%</td>
+                        <td>2</td>
+                        <td class="rice-score">81</td>
+                    </tr>
+                    <tr>
+                        <td>Deal Score Engine</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>80%</td>
+                        <td>3</td>
+                        <td class="rice-score">72</td>
+                    </tr>
+                    <tr>
+                        <td>AI Image Analysis</td>
+                        <td>8</td>
+                        <td>3</td>
+                        <td>60%</td>
+                        <td>5</td>
+                        <td class="rice-score">29</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.82rem; color: var(--gray-500); margin-top: 10px; font-style: italic;" class="fade-in">
+                RICE Score = (Reach &times; Impact &times; Confidence) / Effort. Higher is higher priority.
+            </p>
+
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-top: 48px; margin-bottom: 4px;" class="fade-in">Top 4 Feature Specs</h3>
+            <div class="features-grid fade-in">
+                <div class="feature-card">
+                    <div class="feature-priority">RICE: 229 | Priority #1</div>
+                    <div class="feature-title">Automated Listing Alert</div>
+                    <div class="feature-desc">Monitors Marketplace and Gumtree for listings matching set criteria. Pushes a notification within 60 seconds. The 4-hour Jazz flip happened because the listing was spotted 10 minutes after posting. This makes that the default.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-priority">RICE: 102 | Priority #2</div>
+                    <div class="feature-title">Carsales AMV Auto-Comparison</div>
+                    <div class="feature-desc">Auto-pulls Carsales 'Around Market Value' and displays the gap: 'This car is $2,100 below AMV.' Removes manual cross-referencing. Core view: price, AMV, delta, Buy/Investigate/Pass signal.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-priority">RICE: 81 | Priority #3</div>
+                    <div class="feature-title">Team Deal Pipeline</div>
+                    <div class="feature-desc">Shared Kanban: Spotted / Evaluating / Offer Made / Acquired / For Sale / Sold. Replaces a barely-active group chat with a purpose-built async coordination layer.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-priority">RICE: 95 | Priority #4</div>
+                    <div class="feature-title">Historical Flip Database</div>
+                    <div class="feature-desc">Logs every flip: buy price, sell price, repairs, hold time. Surfaces patterns: 'Jazz averages 31% margin in 14 days. BMW 5-Series averages -18% in 38 days.' Replaces gut feel with a compounding personal dataset.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DOWNLOAD SECTION ==================== -->
+    <div class="download-gate" id="download">
+        <div class="container">
+            <div class="download-gate-inner">
+                <div class="download-gate-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <h2 class="download-gate-title">Download the Full Case Study</h2>
+                <p class="download-gate-text">
+                    Want the complete 10-page PDF with all data, charts, and analysis? Click below to grab a copy.
+                </p>
+                <button class="btn btn-primary" id="openModalBtn" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DOWNLOAD MODAL ==================== -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" type="button" aria-label="Close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <div class="modal-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+
+            <h3 class="modal-title">Before you download</h3>
+            <p class="modal-text">This case study is original work by Isa Shahid, based on real business data from Yakiamotors. It's shared here for portfolio and learning purposes.</p>
+
+            <div class="modal-notice">
+                Please don't redistribute, repurpose, or submit this document as your own. If you'd like to reference it, a link back to this page is appreciated.
+            </div>
+
+            <label class="modal-label" for="downloadReason">What brings you here?</label>
+            <select class="modal-select" id="downloadReason">
+                <option value="" disabled selected>Select a reason...</option>
+                <option value="recruiter">I'm a recruiter reviewing Isa's work</option>
+                <option value="student">I'm a student looking for PM case study examples</option>
+                <option value="curious">Just curious about the business</option>
+                <option value="reference">I want to reference this in my own work</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div class="modal-checkbox-row">
+                <input type="checkbox" id="agreeCheck" class="modal-checkbox">
+                <label for="agreeCheck" class="modal-checkbox-label">I understand this is personal intellectual property and won't claim it as my own</label>
+            </div>
+
+            <button class="btn btn-primary modal-download-btn" id="confirmDownload" type="button" disabled>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== CLOSING ==================== -->
+    <div class="case-closing">
+        <div class="container">
+            <div class="case-closing-tagline">YAKIAMOTORS</div>
+            <div class="case-closing-subtitle">Built with borrowed money. Scaled with discipline.</div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>Isa Shahid &copy; 2026. <a href="index.html">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        /* ---------- Scroll-triggered Fade In Animations ---------- */
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        /* ---------- Download Modal ---------- */
+        const openModalBtn = document.getElementById('openModalBtn');
+        const modal = document.getElementById('downloadModal');
+        const modalClose = document.getElementById('modalClose');
+        const reasonSelect = document.getElementById('downloadReason');
+        const agreeCheck = document.getElementById('agreeCheck');
+        const confirmBtn = document.getElementById('confirmDownload');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateDownloadBtn() {
+            const reasonSelected = reasonSelect.value !== '';
+            const agreed = agreeCheck.checked;
+            confirmBtn.disabled = !(reasonSelected && agreed);
+        }
+
+        openModalBtn.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        reasonSelect.addEventListener('change', updateDownloadBtn);
+        agreeCheck.addEventListener('change', updateDownloadBtn);
+
+        confirmBtn.addEventListener('click', function() {
+            if (!confirmBtn.disabled) {
+                const link = document.createElement('a');
+                link.href = 'yakiamotors_case_study_v7.pdf';
+                link.download = 'yakiamotors_case_study_v7.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
