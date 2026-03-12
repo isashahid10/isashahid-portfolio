@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Isa Shahid - CS Student at Monash University | Aspiring Strategy & Technology Consultant">
-    <title>Isa Shahid | Strategy & Technology Consulting</title>
+    <title>Isa Shahid | CS Student & Technology</title>
 
     <!-- ==================== FONTS ==================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
             box-sizing: border-box;
         }
 
-        :root {
+        :root { 
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --primary-light: #3b82f6;
@@ -137,14 +137,14 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 20px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--gray-600);
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             transition: color var(--transition);
             position: relative;
@@ -1163,6 +1163,150 @@
             }
         }
 
+        /* ---------- RESUME MODAL ---------- */
+        .resume-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .resume-overlay.active {
+            display: flex;
+        }
+
+        .resume-modal {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 520px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .resume-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: all var(--transition);
+        }
+
+        .resume-modal-close:hover {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .resume-modal-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-bg);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .resume-modal h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .resume-modal p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .resume-modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .resume-modal-actions .btn {
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .resume-modal-actions .btn-download {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .resume-modal-actions .btn-download:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .resume-modal-actions .btn-preview {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .resume-modal-actions .btn-preview:hover {
+            background: var(--gray-200);
+        }
+
+        .nav-resume-btn {
+            background: var(--primary-bg) !important;
+            color: var(--primary) !important;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: all var(--transition) !important;
+        }
+
+        .nav-resume-btn:hover {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 16px;
@@ -1183,7 +1327,7 @@
     <!-- ==================== NAVIGATION ==================== -->
     <nav class="nav" id="nav">
         <div class="container nav-inner">
-            <a href="#hero" class="nav-logo">Isa<span>.</span></a>
+            <a href="#hero" class="nav-logo">Isa S<span>.</span></a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -1199,6 +1343,7 @@
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#community">Community</a></li>
                 <li><a href="yakiamotors.html">Case Study</a></li>
+                <li><a href="#" onclick="openResumeModal(); return false;" class="nav-resume-btn">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1210,7 +1355,7 @@
             <div class="hero-text">
                 <span class="hero-label">Open to Internship Opportunities</span>
                 <h1 class="hero-name">Isa Shahid</h1>
-                <p class="hero-tagline">CS Student at Monash | Aspiring Strategy & Technology Consultant</p>
+                <p class="hero-tagline">CS Student at Monash | Exploring Opportunities in Technology</p>
                 <p class="hero-subtitle">Translating technical problems into business solutions</p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary">
@@ -1326,6 +1471,25 @@
         <div class="container">
             <h2 class="section-heading fade-in">Relevant Experience</h2>
             <div class="timeline">
+
+                <!-- Yakiamotors -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-role">Co-Founder</div>
+                                <div class="timeline-company">Yakiamotors</div>
+                            </div>
+                            <span class="timeline-period">Mid 2025 - Present</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Bootstrapped vehicle arbitrage business from AUD $3,200 in borrowed capital to ~$38,000 capital base (10x+) across 35+ flips</li>
+                            <li>Applied build-measure-learn cycles; identified losing pattern in high-mileage German vehicles and pivoted to Japanese-make city cars, improving margins to 20-65%</li>
+                            <li>Designed product spec for FlipIQ: a deal-scoring tool with listing alerts, AMV auto-comparison, team Kanban pipeline, and flip analytics database</li>
+                            <li>Manage all financial operations, capital allocation, and pricing strategy across a 3-person equal-partner team</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Experience 1 -->
                 <div class="timeline-item fade-in">
@@ -1529,7 +1693,7 @@
 
                 <!-- Certificate 3: Qadam Barho -->
                 <div class="certificate-card fade-in">
-                    <img src="Certificates/Screenshot 2026-02-18 at 1.02.26 pm.png" alt="Qadam Barho Consultancy Project Certificate" class="certificate-img" onclick="openLightbox(this.src)">
+                    <img src="Certificates/qadam-barho-certificate.png" alt="Qadam Barho Consultancy Project Certificate" class="certificate-img" onclick="openLightbox(this.src)">
                     <div class="certificate-info">
                         <h3 class="certificate-title">"Qadam Barho" - Student Retention Analysis</h3>
                         <div class="certificate-org">University of Lahore</div>
@@ -1780,6 +1944,30 @@
         </div>
     </section>
 
+    <!-- ==================== RESUME MODAL ==================== -->
+    <div class="resume-overlay" id="resumeModal">
+        <div class="resume-modal">
+            <button class="resume-modal-close" onclick="closeResumeModal()" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="resume-modal-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>My Resume</h3>
+            <p>Download a copy of my resume or preview it in your browser to learn more about my experience and skills.</p>
+            <div class="resume-modal-actions">
+                <a href="Isa_Shahid_Resume.pdf" download class="btn btn-download">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PDF
+                </a>
+                <a href="Isa_Shahid_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-preview">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Preview
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
@@ -1860,7 +2048,25 @@
         }
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeResumeModal();
+            }
+        });
+
+        /* ---------- Resume Modal ---------- */
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resumeModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('resumeModal').addEventListener('click', function(e) {
+            if (e.target === this) closeResumeModal();
         });
     </script>
 
