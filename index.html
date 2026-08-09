@@ -541,6 +541,15 @@
                 background-color var(--dur-hover) ease;
         }
 
+        .card-shot {
+            display: block;
+            width: calc(100% + 48px);
+            margin: -24px -24px 20px;
+            border-radius: var(--radius) var(--radius) 0 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-subtle);
+        }
+
         .card-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -987,7 +996,7 @@
                         <p class="hero-line rise rise-3">
                             Computer Science at <strong>Monash</strong>. I write software on
                             Boeing's factory systems team, and I'm co-founder and CTO of
-                            <strong>Docaroo</strong>, a telehealth platform that has served
+                            <strong><a href="https://docaroo.com.au/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;">Docaroo</a></strong>, a telehealth platform that has served
                             ~1,500 patients.
                         </p>
                         <div class="hero-actions rise rise-4">
@@ -1044,7 +1053,7 @@
                         very different discipline to shipping your own product fast.
                     </p>
                     <p class="lede" style="margin-bottom: 16px;">
-                        I do that too. I'm co-founder and CTO of Docaroo, a telehealth platform
+                        I do that too. I'm co-founder and CTO of <a href="https://docaroo.com.au/" target="_blank" rel="noopener noreferrer">Docaroo</a>, a telehealth platform
                         that has served around 1,500 patients since launch; I own the
                         architecture, the release cycle, and the data-handling and access controls
                         around patient records. Before that I co-founded Yakiamotors and
@@ -1167,6 +1176,10 @@
                     </article>
 
                     <article class="card reveal">
+                        <picture>
+                            <source srcset="assets/stormcast.webp" type="image/webp">
+                            <img src="assets/stormcast.jpg" alt="STORMCAST dashboard showing tracked weather stations, paper trading balance, and expected-value ranked trading signals" class="card-shot" loading="lazy" width="1200" height="741" decoding="async">
+                        </picture>
                         <span class="card-tag">Shipped &middot; commercial</span>
                         <h3>STORMCAST</h3>
                         <p>
@@ -1324,7 +1337,7 @@
                         <div class="job-head">
                             <div>
                                 <div class="job-role">Co-Founder &amp; Chief Technology Officer</div>
-                                <div class="job-org">Docaroo &middot; Melbourne, VIC</div>
+                                <div class="job-org"><a href="https://docaroo.com.au/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px;">Docaroo</a> &middot; Melbourne, VIC</div>
                             </div>
                             <span class="job-period">Early 2026 &ndash; Present</span>
                         </div>
