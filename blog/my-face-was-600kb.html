@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="I rebuilt this site and then measured it, in that order, which was the wrong order.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>My face was 600KB and other crimes against my own website | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/my-face-was-600kb.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="My face was 600KB and other crimes against my own website">
+    <meta property="og:description" content="I rebuilt this site and then measured it, in that order, which was the wrong order.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/my-face-was-600kb.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My face was 600KB and other crimes against my own website">
+    <meta name="twitter:description" content="I rebuilt this site and then measured it, in that order, which was the wrong order.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>My face was 600KB and other crimes against my own website</h1>
+        <p class="standfirst">I rebuilt this site and then measured it, in that order, which was the wrong order.</p>
+        <div class="tags"><span class="tag">This site</span><span class="tag">Performance</span><span class="tag">Web</span></div>
+
+        <p>I rebuilt this website recently. Nicer type, proper dark mode, animations that are not embarrassing. I was quite pleased.</p>
+        <p>Then I measured it. The homepage was <strong>1,042 KB</strong>. Of that, <strong>627 KB was a single photo of my face</strong>, displayed at 188 pixels wide, stored as an 800 pixel PNG.</p>
+        <p>PNG. For a photograph. Of a person.</p>
+        <h2>The fix took four minutes</h2>
+        <p>Resize to 400 pixels, which is still 2x for a retina display. Convert to WebP with a JPEG fallback. Result: <strong>8.5 KB</strong>. That is 99 percent smaller and I could not tell the difference with the two versions side by side.</p>
+        <p>Total homepage went from 1,042 KB to 104 KB. One image. Four minutes. Ten times faster.</p>
+        <h2>The genuinely embarrassing part</h2>
+        <p>The image was in a folder called <code>Certificates</code>. It had been sitting there since the first version of the site because that is where I dumped it once and never thought about again. Nobody audits their own assets folder. It is the junk drawer of software.</p>
+        <h2>Things I have now learnt the hard way</h2>
+        <p><strong>PNG is for graphics with flat colour and sharp edges.</strong> Logos, icons, screenshots of text. A photograph in PNG is storing every single skin tone gradient losslessly for absolutely no reason.</p>
+        <p><strong>Measure before you are proud.</strong> I spent real time on easing curves and letter spacing while shipping two thirds of a megabyte of my own head. The taste work was not wasted, but it was polishing the paintwork on a car with no wheels.</p>
+        <p><strong>Nothing tells you.</strong> No error, no warning, no lint rule. The site worked. It looked fine on my machine on my wifi. The only way you find out is if you go looking, and the only reason to go looking is if you have decided that this is a thing you check.</p>
+        <h2>The rest of the audit, since I was already there</h2>
+        <p>While I was in the mood: no favicon, so every tab showed a blank page icon. No Open Graph tags, so every time I pasted my own link into a message it rendered as a grey rectangle with no image, which is a strange thing to be doing while asking people to look at your work.</p>
+        <p>Both are twenty minute fixes that had been broken for months. The lesson is less about images and more about the fact that <strong>the things nobody complains about are the things nobody checks.</strong></p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="What I learnt rebuilding this site about animation, and specifically about when the correct amount of animation is none.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>I am not a designer but I did read the manual | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/i-am-not-a-designer.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="I am not a designer but I did read the manual">
+    <meta property="og:description" content="What I learnt rebuilding this site about animation, and specifically about when the correct amount of animation is none.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/i-am-not-a-designer.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="I am not a designer but I did read the manual">
+    <meta name="twitter:description" content="What I learnt rebuilding this site about animation, and specifically about when the correct amount of animation is none.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>I am not a designer but I did read the manual</h1>
+        <p class="standfirst">What I learnt rebuilding this site about animation, and specifically about when the correct amount of animation is none.</p>
+        <div class="tags"><span class="tag">This site</span><span class="tag">Design</span><span class="tag">Animation</span></div>
+
+        <p>I rebuilt this site properly, which meant reading actual material on interface design instead of copying whatever looked nice on someone else's page.</p>
+        <p>Here is what stuck, mostly from Emil Kowalski's writing on animation and Apple's talks on fluid interfaces.</p>
+        <h2>The question nobody asks first</h2>
+        <p>The first question is not "what animation should this have". It is <strong>"should this animate at all"</strong>, and the answer is often no.</p>
+        <p>The rule that reorganised my thinking is about frequency. Something a user sees a hundred times a day should never animate, because you are adding delay to an action they have already decided on. Something they see occasionally can animate. Something they see once, like a first load, is where you are allowed to have fun.</p>
+        <p>Raycast has no open animation. That is not laziness, that is the correct answer for something you open forty times a day.</p>
+        <h2>Easing, or why your dropdown feels slow</h2>
+        <p><code>ease-in</code> starts slow. Which means it delays movement at exactly the moment the user is watching hardest, right after they clicked. A dropdown with <code>ease-in</code> at 300ms <strong>feels</strong> slower than the same dropdown with <code>ease-out</code> at 300ms, despite being identical in duration.</p>
+        <p>Also: the built in CSS easings are weak. <code>cubic-bezier(0.23, 1, 0.32, 1)</code> is what I use for most things now and it has an actual snap to it.</p>
+        <h2>Small rules, large effect</h2>
+        <ul><li>Never animate from <code>scale(0)</code>. Nothing in reality appears from literally nothing. Start at <code>scale(0.95)</code> with opacity and it reads as arriving rather than materialising.</li><li>Buttons need <code>transform: scale(0.97)</code> on <code>:active</code>. It costs one line and it is the difference between an interface that responds and one that merely works.</li><li>Exits should be faster than entrances. You have already decided to leave.</li><li><code>transition: all</code> is a trap. Name the properties.</li><li>Only animate <code>transform</code> and <code>opacity</code> if you can help it. They skip layout and paint. Animating height or margin makes the browser redo everything, every frame.</li></ul>
+        <h2>The one that actually changed my behaviour</h2>
+        <p>Gate hover effects behind <code>@media (hover: hover) and (pointer: fine)</code>.</p>
+        <p>Touch screens fire hover on tap. Without that gate, every hover animation you wrote fires on mobile at the exact moment somebody is trying to press the thing, and it feels broken in a way nobody can quite describe.</p>
+        <p>I had shipped this bug on every site I had ever made and had never once noticed, because I tested on a laptop like a fool.</p>
+        <h2>The meta lesson</h2>
+        <p>None of this is talent. It is a list. Someone wrote the list down, I read it, and my interfaces got noticeably better within a day.</p>
+        <p>I had vaguely assumed design sense was something you either had or did not. A lot of it is just knowing about twenty specific things, most of which have a correct answer that somebody has already worked out and published for free.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

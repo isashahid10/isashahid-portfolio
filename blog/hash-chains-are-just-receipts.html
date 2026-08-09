@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="CodeProof exists because &#x27;I definitely wrote this myself&#x27; is not evidence, and I wanted to find out how little machinery it takes to make it evidence.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Hash chains are just receipts that grass on you | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/hash-chains-are-just-receipts.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hash chains are just receipts that grass on you">
+    <meta property="og:description" content="CodeProof exists because &#x27;I definitely wrote this myself&#x27; is not evidence, and I wanted to find out how little machinery it takes to make it evidence.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/hash-chains-are-just-receipts.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hash chains are just receipts that grass on you">
+    <meta name="twitter:description" content="CodeProof exists because &#x27;I definitely wrote this myself&#x27; is not evidence, and I wanted to find out how little machinery it takes to make it evidence.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Hash chains are just receipts that grass on you</h1>
+        <p class="standfirst">CodeProof exists because 'I definitely wrote this myself' is not evidence, and I wanted to find out how little machinery it takes to make it evidence.</p>
+        <div class="tags"><span class="tag">CodeProof</span><span class="tag">TypeScript</span><span class="tag">Cryptography</span></div>
+
+        <p>Academic integrity tooling mostly answers "does this look like something else". CodeProof tries to answer a different question: <strong>when was this written, and has it been quietly edited since.</strong></p>
+        <p>Those are not the same question and the second one turns out to be much easier.</p>
+        <h2>The whole idea in one paragraph</h2>
+        <p>Hash a file. Store the hash. Hash the next snapshot together with the previous hash. Repeat. Now every record depends on the one before it, so if you go back and change something in the middle, every hash after it stops matching. You do not need to detect the edit. The chain detects it for you and cannot help itself.</p>
+        <p>That is it. That is the entire trick. It is the same idea underneath a lot of things that get described with far more excitement than it deserves.</p>
+        <h2>What I actually had to build</h2>
+        <ul><li>SHA-256 hashing of source files</li><li>Snapshot generation so there is something to chain in the first place</li><li>A verification command that walks the chain and reports <strong>exactly which file broke it and when</strong>, because "verification failed" is a useless error message and I have received enough of those to know</li></ul>
+        <p>That last one is the only part I would defend as design work rather than plumbing. An integrity tool that tells you something is wrong without telling you where is just anxiety with a CLI.</p>
+        <h2>What it does not do</h2>
+        <p>It does not prove you wrote the code. Nothing can. You could type someone else's work in by hand and the chain would happily certify that you typed it slowly.</p>
+        <p>What it proves is the shape of the process: that the work existed at a sequence of points in time, and that the record has not been retroactively tidied up. For an audit where the question is "did this appear fully formed at 2am the night before", that shape is the whole argument.</p>
+        <blockquote><p>Knowing the limits of what your tool proves is more important than the tool. Every so often someone builds an integrity system, forgets what it actually attests, and starts treating the output as truth.</p></blockquote>
+        <h2>The bit I got wrong first</h2>
+        <p>My first version stored hashes and nothing else, which felt clean and minimal and was completely useless. A hash on its own tells you a file changed. It cannot tell you a file changed <strong>in a way that skipped steps</strong>, because there is no notion of steps.</p>
+        <p>Chaining is what turns a pile of fingerprints into a story. Same primitive, one extra field, entirely different tool.</p>
+        <p>Code is at <a href="https://github.com/isashahid10/codeproof" target="_blank" rel="noopener noreferrer">github.com/isashahid10/codeproof</a>.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

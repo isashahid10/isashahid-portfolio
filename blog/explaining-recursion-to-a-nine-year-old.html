@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Teaching kids to code is the fastest way to find out which things you understand and which things you have only memorised.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Explaining recursion to a nine year old, badly, then well | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/explaining-recursion-to-a-nine-year-old.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Explaining recursion to a nine year old, badly, then well">
+    <meta property="og:description" content="Teaching kids to code is the fastest way to find out which things you understand and which things you have only memorised.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/explaining-recursion-to-a-nine-year-old.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Explaining recursion to a nine year old, badly, then well">
+    <meta name="twitter:description" content="Teaching kids to code is the fastest way to find out which things you understand and which things you have only memorised.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Explaining recursion to a nine year old, badly, then well</h1>
+        <p class="standfirst">Teaching kids to code is the fastest way to find out which things you understand and which things you have only memorised.</p>
+        <div class="tags"><span class="tag">CodeCamp</span><span class="tag">Teaching</span><span class="tag">Learning</span></div>
+
+        <p>I teach Python, game design and robotics to kids aged 7 to 16. Usually eight or so per session, all at different levels, several of whom would rather be somewhere else.</p>
+        <p>It is the single most useful thing I have done for my own understanding, and not for the reason people usually give.</p>
+        <h2>Kids cannot be fobbed off</h2>
+        <p>An adult who does not follow your explanation will nod. They will fill the gap later, or quietly decide it does not matter, or assume the problem is them. You get away with it.</p>
+        <p>A nine year old will look at you and say "but why though", and they will keep saying it, and they are not being difficult. They are correctly identifying that you have not actually explained anything, you have just said true sentences in a confident voice.</p>
+        <p>This is a brutal and excellent test. <strong>You find out very quickly which concepts you understand and which ones you have memorised the shape of.</strong></p>
+        <h2>My first attempt at recursion</h2>
+        <p>I said something like "it is a function that calls itself". Which is true, and useless, and I watched it land as absolutely nothing.</p>
+        <p>What worked was much dumber. Stand at the back of a queue. You want to know what position you are in. You cannot see the front. So you tap the person ahead and ask what number they are, and they do not know either, so they tap the person ahead of them, and this keeps happening until it reaches someone at the very front who says "I am number one" because they can see there is nobody ahead. Then the answer comes back down the queue, everyone adding one.</p>
+        <p>The base case is the person at the front. The stack is the queue. Nobody in the middle knows the answer and nobody in the middle needs to.</p>
+        <p>That got it. It got it because it has a <strong>why does it stop</strong> built into the story, and "a function that calls itself" does not, which is exactly why beginners write infinite loops.</p>
+        <h2>What transferred</h2>
+        <p>I now think the test of understanding something is whether you can explain it without using its vocabulary. If I can only describe recursion using the words "recursion", "stack" and "base case", I have learnt the labels.</p>
+        <p>The other thing, which took longer: <strong>an explanation that fails is information about the explanation, not about the listener.</strong> My instinct the first few times was to conclude the kid was not getting it. The kid was fine. The queue metaphor was sitting there the whole time and I had not gone looking for it.</p>
+        <p>I have started applying this to documentation and code review and, occasionally, to arguments.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

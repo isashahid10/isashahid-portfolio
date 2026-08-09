@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="The first thing I wanted to do in the OpenStrap codebase was exactly the wrong thing, and the codebase would have let me.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Forking someone else&#x27;s code and immediately wanting to ruin it | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/forking-someone-elses-code.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Forking someone else&#x27;s code and immediately wanting to ruin it">
+    <meta property="og:description" content="The first thing I wanted to do in the OpenStrap codebase was exactly the wrong thing, and the codebase would have let me.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/forking-someone-elses-code.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Forking someone else&#x27;s code and immediately wanting to ruin it">
+    <meta name="twitter:description" content="The first thing I wanted to do in the OpenStrap codebase was exactly the wrong thing, and the codebase would have let me.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Forking someone else&#x27;s code and immediately wanting to ruin it</h1>
+        <p class="standfirst">The first thing I wanted to do in the OpenStrap codebase was exactly the wrong thing, and the codebase would have let me.</p>
+        <div class="tags"><span class="tag">WHOOP</span><span class="tag">Architecture</span><span class="tag">Dart</span></div>
+
+        <p>My WHOOP band is a nice piece of hardware that turns into jewellery when you stop paying. So I stopped paying and went looking for a way to keep the band.</p>
+        <p>That is how I ended up in <a href="https://github.com/OpenStrap" target="_blank" rel="noopener noreferrer">OpenStrap</a>, an open source project that had already done the genuinely hard part: working out what the band actually says over Bluetooth. I want to be upfront that this is a fork. I did not decode the protocol. Someone else did, and they did it properly.</p>
+        <h2>The part I did not expect</h2>
+        <p>I assumed the interesting bit would be sensors and maths. It was not. It was the folder structure, which sounds like the most boring sentence ever written, so bear with me.</p>
+        <p>OpenStrap splits everything into three repos and refuses to let them bleed into each other:</p>
+        <ul><li><strong>protocol</strong> takes bytes off the band and gives you named records. It knows about Bluetooth. It has no idea what a "recovery score" is.</li><li><strong>analytics</strong> takes those records and computes metrics. It knows the published methods. It has never heard of Bluetooth.</li><li><strong>edge</strong> is the app. Storage, screens, flows. It treats the other two as libraries and does not reach past them.</li></ul>
+        <h2>Where I tried to be clever</h2>
+        <p>Roughly ten minutes in, I wanted to add a feature that needed a value the analytics layer computes. The fastest path was obvious: have the UI grab a raw field straight out of the protocol layer and do the maths right there in the widget. Two minutes of work. Would have worked perfectly. Nobody would have known.</p>
+        <p>I did not do it, and it took me an embarrassingly long time to articulate why beyond "it feels wrong".</p>
+        <p>The reason is that the split is the only thing making the decoder testable on its own. The moment the UI knows what a Bluetooth characteristic looks like, you cannot verify the decoder without booting an app, and you cannot change the decoder without auditing every screen that might be reading those bytes. The boundary costs you two minutes today. What it buys is the ability to reason about one piece at a time forever.</p>
+        <blockquote><p>Working inside someone else's module boundaries is a completely different skill from drawing your own. You do not get to argue with the design. You have to understand why it is there before you have earned the right to be annoyed by it.</p></blockquote>
+        <h2>What I actually added</h2>
+        <p>The band knows how hard your body worked. It has no clue what you did. It sees your heart rate go up and cannot tell a heavy set of squats from a stressful email, which feels like a metaphor for something.</p>
+        <p>So my fork adds resistance training logging, nutrition tracking, weather context (heat moves both your heart rate and how bad you feel, and without it you misread yourself every summer), and AI summaries that are only useful because those three inputs exist.</p>
+        <p>All of it runs on the phone. No account, no sync, no server holding my heart rate. That was a constraint from day one rather than a feature I bolted on, and it deleted an enormous amount of work. No auth layer. No data retention policy. No monthly bill.</p>
+        <p>It is a personal build for one person and one band. It is not a product, there is no roadmap, and I am not pretending otherwise. It works, I use it daily, and I add things when I want them.</p>
+        <p>Code is at <a href="https://github.com/isashahid10/whoop" target="_blank" rel="noopener noreferrer">github.com/isashahid10/whoop</a>.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

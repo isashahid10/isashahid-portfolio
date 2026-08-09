@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Notes on things I have built, things that broke, and things I was wrong about.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Blog | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog">
+    <meta property="og:description" content="Notes on things I have built, things that broke, and things I was wrong about.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog">
+    <meta name="twitter:description" content="Notes on things I have built, things that broke, and things I was wrong about.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Isa Shahid
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Blog</h1>
+        <p class="standfirst">
+            Notes on things I have built, things that broke, and things I turned out to be
+            wrong about. 15 posts, no particular order.
+        </p>
+
+        <div class="entries">
+            <a class="entry" href="/blog/forking-someone-elses-code.html">
+                <h2>Forking someone else&#x27;s code and immediately wanting to ruin it</h2>
+                <p>The first thing I wanted to do in the OpenStrap codebase was exactly the wrong thing, and the codebase would have let me.</p>
+                <div class="tags"><span class="tag">WHOOP</span><span class="tag">Architecture</span></div>
+            </a>
+            <a class="entry" href="/blog/my-heart-rate-does-not-need-the-cloud.html">
+                <h2>My heart rate does not need to visit a data centre</h2>
+                <p>Working out how much of a fitness tracker genuinely requires a server. The answer is close to none of it, which raises an awkward question.</p>
+                <div class="tags"><span class="tag">WHOOP</span><span class="tag">Privacy</span></div>
+            </a>
+            <a class="entry" href="/blog/hash-chains-are-just-receipts.html">
+                <h2>Hash chains are just receipts that grass on you</h2>
+                <p>CodeProof exists because 'I definitely wrote this myself' is not evidence, and I wanted to find out how little machinery it takes to make it evidence.</p>
+                <div class="tags"><span class="tag">CodeProof</span><span class="tag">TypeScript</span></div>
+            </a>
+            <a class="entry" href="/blog/pandas-ate-all-my-ram.html">
+                <h2>pandas ate all my RAM and I deserved it</h2>
+                <p>CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in 'your browser is not responding'.</p>
+                <div class="tags"><span class="tag">CSV Insight Pro</span><span class="tag">Python</span></div>
+            </a>
+            <a class="entry" href="/blog/the-weather-is-a-distribution.html">
+                <h2>The weather is a distribution and everyone forgets</h2>
+                <p>STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.</p>
+                <div class="tags"><span class="tag">STORMCAST</span><span class="tag">Forecasting</span></div>
+            </a>
+            <a class="entry" href="/blog/access-control-is-schema.html">
+                <h2>Access control is schema, not middleware</h2>
+                <p>The most expensive thing I got wrong on Docaroo was treating 'who can see this' as something to add after the feature worked.</p>
+                <div class="tags"><span class="tag">Docaroo</span><span class="tag">Supabase</span></div>
+            </a>
+            <a class="entry" href="/blog/boring-technology-is-a-feature.html">
+                <h2>Boring technology is a feature you ship to yourself</h2>
+                <p>Docaroo runs on the least interesting stack I could assemble, on purpose, and it is the best decision I made.</p>
+                <div class="tags"><span class="tag">Docaroo</span><span class="tag">Next.js</span></div>
+            </a>
+            <a class="entry" href="/blog/two-losses.html">
+                <h2>Two thousand dollars of tuition, paid to two German cars</h2>
+                <p>The worst deals we ever did taught me more than every good one, and not for the reason people usually say that.</p>
+                <div class="tags"><span class="tag">Yakiamotors</span><span class="tag">Decisions</span></div>
+            </a>
+            <a class="entry" href="/blog/i-built-a-tool-because-i-was-annoyed.html">
+                <h2>I specced a whole product because I was annoyed at a group chat</h2>
+                <p>FlipIQ exists because the information needed to spot our worst pattern was sitting in three people's heads and nowhere else.</p>
+                <div class="tags"><span class="tag">Yakiamotors</span><span class="tag">FlipIQ</span></div>
+            </a>
+            <a class="entry" href="/blog/my-face-was-600kb.html">
+                <h2>My face was 600KB and other crimes against my own website</h2>
+                <p>I rebuilt this site and then measured it, in that order, which was the wrong order.</p>
+                <div class="tags"><span class="tag">This site</span><span class="tag">Performance</span></div>
+            </a>
+            <a class="entry" href="/blog/solo-projects-did-not-prepare-me.html">
+                <h2>Nothing about solo projects prepared me for a real process</h2>
+                <p>Everything I had built before, I was the only person who had to agree with me. That turns out to have been doing a lot of work.</p>
+                <div class="tags"><span class="tag">Boeing</span><span class="tag">Engineering</span></div>
+            </a>
+            <a class="entry" href="/blog/explaining-recursion-to-a-nine-year-old.html">
+                <h2>Explaining recursion to a nine year old, badly, then well</h2>
+                <p>Teaching kids to code is the fastest way to find out which things you understand and which things you have only memorised.</p>
+                <div class="tags"><span class="tag">CodeCamp</span><span class="tag">Teaching</span></div>
+            </a>
+            <a class="entry" href="/blog/forty-tickets-a-week.html">
+                <h2>What forty support tickets a week does to your brain</h2>
+                <p>The best product research I have ever done was a job I did not think of as product research at the time.</p>
+                <div class="tags"><span class="tag">Global Fitness</span><span class="tag">Operations</span></div>
+            </a>
+            <a class="entry" href="/blog/i-am-not-a-designer.html">
+                <h2>I am not a designer but I did read the manual</h2>
+                <p>What I learnt rebuilding this site about animation, and specifically about when the correct amount of animation is none.</p>
+                <div class="tags"><span class="tag">This site</span><span class="tag">Design</span></div>
+            </a>
+            <a class="entry" href="/blog/things-i-believed-that-were-wrong.html">
+                <h2>Things I believed that turned out to be wrong</h2>
+                <p>A running list, kept mainly so I stop repeating myself.</p>
+                <div class="tags"><span class="tag">Learning</span><span class="tag">Opinions</span></div>
+            </a>
+        </div>
+    </main>
+
+    <style>
+        .entries { display: grid; gap: 2px; margin-bottom: 80px; }
+        .entry {
+            display: block;
+            padding: 22px 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 180ms cubic-bezier(0.23,1,0.32,1), border-color 180ms ease, background-color 180ms ease;
+        }
+        .entry h2 { margin: 0 0 8px; font-size: 1.0625rem; letter-spacing: -0.014em; }
+        .entry p { margin: 0 0 12px; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.55; }
+        .entry .tags { margin: 0; }
+        .entry:active { transform: scale(0.995); }
+        @media (hover: hover) and (pointer: fine) {
+            .entry:hover { transform: translateY(-2px); border-color: var(--border-strong); background: var(--bg-subtle); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .entry, .entry:hover, .entry:active { transform: none; }
+        }
+    </style>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

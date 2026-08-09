@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Everything I had built before, I was the only person who had to agree with me. That turns out to have been doing a lot of work.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Nothing about solo projects prepared me for a real process | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/solo-projects-did-not-prepare-me.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Nothing about solo projects prepared me for a real process">
+    <meta property="og:description" content="Everything I had built before, I was the only person who had to agree with me. That turns out to have been doing a lot of work.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/solo-projects-did-not-prepare-me.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nothing about solo projects prepared me for a real process">
+    <meta name="twitter:description" content="Everything I had built before, I was the only person who had to agree with me. That turns out to have been doing a lot of work.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Nothing about solo projects prepared me for a real process</h1>
+        <p class="standfirst">Everything I had built before, I was the only person who had to agree with me. That turns out to have been doing a lot of work.</p>
+        <div class="tags"><span class="tag">Boeing</span><span class="tag">Engineering</span><span class="tag">Learning</span></div>
+
+        <p>I am doing an Industry Based Learning placement as a software engineering intern, working on factory systems. It is the first time I have written code inside an established engineering process rather than one I invented for myself that morning.</p>
+        <p>I am not going to write about anything internal here. This is only about the adjustment, which was bigger than I expected.</p>
+        <h2>What solo projects teach you badly</h2>
+        <p>On my own projects I am the architect, the reviewer, the tester and the only person who has to be convinced. I had started to believe this made me fast.</p>
+        <p>It made me fast at the parts I find easy. It also meant every one of my habits had gone completely unchallenged, because there was nobody in a position to challenge them. My commit messages were for me. My branch names were for me. My "obvious" naming was obvious to exactly one person, and that person had the full context in his head at the time and would not have it two weeks later.</p>
+        <h2>Code review is a different sport</h2>
+        <p>The first time somebody reviews your code properly is a humbling afternoon. Not because the feedback is harsh, but because the questions are ones you never had to answer.</p>
+        <p>Why this name. What happens if this is empty. Is this the same as the thing over there, and if it is, why is it written differently. On a solo project all of those have the same answer, which is "because that is how I felt at the time", and that answer does not survive being said out loud.</p>
+        <p>The useful reframe I have landed on: <strong>review is not somebody checking your work. It is somebody testing whether the code explains itself to a person who was not there when you wrote it.</strong> That is a property of the code, not a property of you, which makes it much less personal and much more fixable.</p>
+        <h2>Traceability is not bureaucracy</h2>
+        <p>I came in with a mild private opinion that process is what happens when organisations get too big to move. I have revised this.</p>
+        <p>When correctness genuinely matters and other people depend on what you shipped, the ability to answer "why is this like this, who decided, and when" is not overhead. It is the thing that lets anyone change the system later without being afraid. Version control and release process are not there to slow you down. They are there so that a change six months from now is a decision rather than a gamble.</p>
+        <h2>The honest summary</h2>
+        <p>I was good at the part where you build a thing. I was inexperienced at every part that comes after, which it turns out is most of the job. That is a genuinely useful thing to find out at 20 rather than at 30.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

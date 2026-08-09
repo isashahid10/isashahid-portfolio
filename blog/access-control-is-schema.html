@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="The most expensive thing I got wrong on Docaroo was treating &#x27;who can see this&#x27; as something to add after the feature worked.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Access control is schema, not middleware | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/access-control-is-schema.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Access control is schema, not middleware">
+    <meta property="og:description" content="The most expensive thing I got wrong on Docaroo was treating &#x27;who can see this&#x27; as something to add after the feature worked.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/access-control-is-schema.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Access control is schema, not middleware">
+    <meta name="twitter:description" content="The most expensive thing I got wrong on Docaroo was treating &#x27;who can see this&#x27; as something to add after the feature worked.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Access control is schema, not middleware</h1>
+        <p class="standfirst">The most expensive thing I got wrong on Docaroo was treating 'who can see this' as something to add after the feature worked.</p>
+        <div class="tags"><span class="tag">Docaroo</span><span class="tag">Supabase</span><span class="tag">Security</span></div>
+
+        <p>I am technical co-founder of Docaroo, a telehealth platform that has seen around 1,500 patients. My co-founder is a practising GP. That combination has shaped my engineering more than any framework choice.</p>
+        <p>This post is about the thing I got wrong.</p>
+        <h2>The mistake</h2>
+        <p>I built features first and thought about permissions second. Get the flow working, then add the check. That is how I had always done it, and on every previous project it was fine.</p>
+        <p>It is not fine when the row is a patient record.</p>
+        <p>The problem is not that you might forget a check, although you might. The problem is that <strong>who can read a field determines how you store it</strong>, and by the time you notice, you have written queries against a shape that assumed the answer did not matter. Retrofitting permissions is not adding an <code>if</code>. It is rewriting things you already shipped and re-testing paths you thought were done.</p>
+        <h2>What I do now</h2>
+        <p>For every new field, three questions before the migration:</p>
+        <ul><li>Who needs to <strong>read</strong> this?</li><li>Who needs to <strong>write</strong> it?</li><li>What is the smallest set of people for whom either answer is yes?</li></ul>
+        <p>The useful part is that the honest answer is almost always fewer people than the convenient design assumes. Convenience says "the clinician dashboard needs the patient object". The honest answer is usually "the dashboard needs four fields off the patient object", and those are very different rows to protect.</p>
+        <blockquote><p>The best way to protect sensitive data is to never have collected it. The second best is for very few code paths to be able to reach it. Everything after that is damage control with good intentions.</p></blockquote>
+        <h2>Blast radius</h2>
+        <p>The other thing that changed is how I think about deploying. A broken flow in a side project means somebody is annoyed. A broken flow here means a person who needed a medical certificate for work does not get one, or a consultation drops halfway through while somebody is describing a symptom.</p>
+        <p>What that actually changed in practice was narrower than "be careful", which is useless advice. It was that the consultation path stopped being somewhere I experiment. Dashboards, onboarding copy, pricing presentation: still fast, still iterate. The path from "patient books" to "patient has what they came for" does not change casually and does not change late on a Friday.</p>
+        <p>Two speeds in one codebase, and being explicit about which one you are in.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

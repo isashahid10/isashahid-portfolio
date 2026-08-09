@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="description" content="Isa Shahid — Computer Science at Monash. Software Engineering Intern at Boeing, co-founder and CTO of Docaroo, co-founder of Yakiamotors. Melbourne, VIC.">
+    <meta name="description" content="Isa Shahid. Computer Science at Monash. Software Engineering Intern at Boeing, co-founder and CTO of Docaroo, co-founder of Yakiamotors. Melbourne, VIC.">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#ffffff" id="themeColor">
-    <title>Isa Shahid — Software Engineering &amp; Product</title>
+    <title>Isa Shahid, Software Engineering &amp; Product</title>
     <link rel="canonical" href="https://isashahid.netlify.app/">
 
     <!-- Icons -->
@@ -17,15 +17,15 @@
     <!-- Link previews (LinkedIn, WhatsApp, Slack, iMessage, X) -->
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Isa Shahid">
-    <meta property="og:title" content="Isa Shahid — Software Engineering &amp; Product">
+    <meta property="og:title" content="Isa Shahid, Software Engineering &amp; Product">
     <meta property="og:description" content="Computer Science at Monash. Software Engineering Intern at Boeing, co-founder and CTO of Docaroo, co-founder of Yakiamotors.">
     <meta property="og:url" content="https://isashahid.netlify.app/">
     <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Isa Shahid — Software Engineering Intern at Boeing, Co-Founder and CTO at Docaroo">
+    <meta property="og:image:alt" content="Isa Shahid, Software Engineering Intern at Boeing, Co-Founder and CTO at Docaroo">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Isa Shahid — Software Engineering &amp; Product">
+    <meta name="twitter:title" content="Isa Shahid, Software Engineering &amp; Product">
     <meta name="twitter:description" content="Computer Science at Monash. Software Engineering Intern at Boeing, co-founder and CTO of Docaroo.">
     <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
 
@@ -78,7 +78,7 @@
             --dur-hover: 180ms;   /* hover / colour */
             --dur-panel: 220ms;   /* modal, menu enter */
             --dur-exit: 150ms;    /* exits are faster than enters */
-            --dur-reveal: 420ms;  /* scroll reveal — explanatory, not UI */
+            --dur-reveal: 420ms;  /* scroll reveal, explanatory rather than UI */
 
             --bg: #ffffff;
             --bg-subtle: #fafafa;
@@ -107,7 +107,7 @@
         }
 
         /* Dark theme. Driven only by [data-theme], which the head script sets
-           from a stored choice or the OS setting — one definition, no media
+           from a stored choice or the OS setting. One definition, no media
            query to drift out of sync with it.
 
            Deliberately not near-black: the page sits on a warm charcoal, so
@@ -157,7 +157,7 @@
             overflow-x: hidden;
             /* Ease the light<->dark switch. An abrupt full-viewport brightness
                jump is jarring, and it's the one theme-change transition that
-               reduced-motion should keep — it's colour, not movement. */
+               reduced-motion should keep, because it is colour rather than movement. */
             transition: background-color 220ms ease, color 220ms ease;
         }
 
@@ -257,7 +257,7 @@
         }
         .reveal.in { opacity: 1; transform: translateY(0); }
 
-        /* Stagger is decorative — kept inside the 30–80ms band so it never
+        /* Stagger is decorative, kept inside the 30-80ms band so it never
            reads as the page being slow. */
         .stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
         .stagger > .reveal:nth-child(2) { transition-delay: 55ms; }
@@ -433,7 +433,7 @@
             letter-spacing: -0.005em;
             cursor: pointer;
             font-family: inherit;
-            /* Named properties only — never `all`. */
+            /* Named properties only, never `all`. */
             transition:
                 transform var(--dur-press) var(--ease-out),
                 background-color var(--dur-hover) ease,
@@ -490,7 +490,7 @@
         }
 
         /* On-load entrance. Rare/first-time tier, so it gets the delight
-           budget — a predetermined CSS animation, which keeps running off the
+           budget. A predetermined CSS animation, which keeps running off the
            main thread while the rest of the page is still loading. */
         .rise { animation: rise 480ms var(--ease-out) both; }
         .rise-1 { animation-delay: 40ms; }
@@ -751,7 +751,7 @@
         }
 
         /* ---------- OVERLAYS (modal + lightbox) ----------
-           Enter: scale(0.96) + opacity — never from scale(0), because nothing
+           Enter: scale(0.96) + opacity, never from scale(0), because nothing
            in the real world appears from nothing. Origin stays centred: modals
            are the documented exception to trigger-anchored origins. */
         .overlay {
@@ -841,7 +841,7 @@
         }
 
         /* ============================================================
-           HOVER — gated. Touch devices fire hover on tap, which turns
+           HOVER, gated. Touch devices fire hover on tap, which turns
            every hover transform into a false positive.
            ============================================================ */
         @media (hover: hover) and (pointer: fine) {
@@ -939,7 +939,7 @@
 
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#writing">Writing</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -962,7 +962,7 @@
 
     <div class="nav-sheet" id="navSheet">
         <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
+        <a href="#blog">Blog</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#academics">Academics</a>
@@ -1040,7 +1040,7 @@
                         I'm a Computer Science student at Monash, specialising in Algorithms and
                         Software. Right now I'm on a competitive Industry-Based Learning placement
                         with Boeing's Factory Systems team, working inside an engineering process
-                        where traceability and correctness are non-negotiable &mdash; which is a
+                        where traceability and correctness are non-negotiable, which is a
                         very different discipline to shipping your own product fast.
                     </p>
                     <p class="lede" style="margin-bottom: 16px;">
@@ -1052,8 +1052,8 @@
                         35+ flips, with no outside investors.
                     </p>
                     <p class="lede">
-                        The through-line across all of it &mdash; and across teaching kids to
-                        code, running festival logistics, and triaging customer support &mdash; is
+                        The through-line across all of it, and across teaching kids to
+                        code, running festival logistics, and triaging customer support, is
                         the same work: find the real problem underneath the reported one, fix it
                         with other people, and explain it clearly enough that the fix survives.
                     </p>
@@ -1067,17 +1067,17 @@
                 <div class="section-head reveal">
                     <span class="eyebrow">Projects</span>
                     <h2>Things I've shipped</h2>
-                    <p>Built end to end &mdash; specced, written, deployed, and used by someone other than me.</p>
+                    <p>Built end to end: specced, written, deployed, and used by someone other than me.</p>
                 </div>
 
                 <div class="grid-2 stagger">
                     <article class="card span-all reveal">
                         <span class="card-tag">Shipped &middot; actively maintained</span>
-                        <h3>WHOOP Companion &mdash; a WHOOP 4.0 that works without the subscription</h3>
+                        <h3>WHOOP Companion: a WHOOP 4.0 that works without the subscription</h3>
                         <p>
                             A companion app that keeps a WHOOP 4.0 band fully usable without the
                             vendor subscription. It pairs over Bluetooth and computes everything
-                            on the phone &mdash; recovery, strain, sleep staging, HRV &mdash; with
+                            on the phone (recovery, strain, sleep staging, HRV) with
                             no cloud round-trip, so the sensor data never leaves the device. Built
                             in Dart and Flutter on top of
                             <a href="https://github.com/OpenStrap" target="_blank" rel="noopener noreferrer">OpenStrap</a>,
@@ -1106,7 +1106,7 @@
 
                     <article class="card span-all reveal">
                         <span class="card-tag">Product case study</span>
-                        <h3>Yakiamotors &mdash; vehicle arbitrage, 10&times; on bootstrapped capital</h3>
+                        <h3>Yakiamotors: vehicle arbitrage, 10&times; on bootstrapped capital</h3>
                         <p>
                             Co-founded and ran a vehicle arbitrage business on $3,200 of borrowed
                             capital, grown to a ~$38,000 base across 35+ flips at 20&ndash;65%
@@ -1163,8 +1163,8 @@
                         <p>
                             A browser-based analytics tool that profiles arbitrary CSV uploads
                             with no setup, processing 100,000+ row datasets in under 30 seconds.
-                            It generates 10+ statistical summaries &mdash; distributions,
-                            correlations, missing-value and outlier reports &mdash; plus 5
+                            It generates 10+ statistical summaries (distributions,
+                            correlations, missing-value and outlier reports) plus 5
                             visualisation types, with automatic type inference across mixed-quality
                             columns. Chunked reads and vectorised pandas operations keep large
                             files responsive inside a single Streamlit session.
@@ -1225,62 +1225,53 @@
             </div>
         </section>
 
-        <!-- ==================== WRITING ==================== -->
-        <section class="section" id="writing">
+        <!-- ==================== BLOG ==================== -->
+        <section class="section" id="blog">
             <div class="container">
                 <div class="section-head reveal">
-                    <span class="eyebrow">Writing</span>
-                    <h2>Notes on things I've built</h2>
-                    <p>Mostly the decisions that turned out to be wrong first, and what changed my mind.</p>
+                    <span class="eyebrow">Blog</span>
+                    <h2>Things I built, things that broke</h2>
+                    <p>Fifteen posts on what I have made and what I turned out to be wrong about.</p>
                 </div>
 
                 <div class="grid-2 stagger">
-                    <a href="writing/two-losses-that-changed-what-we-buy.html" class="card reveal" style="display: block;">
-                        <h3>The two losses that changed what we buy</h3>
+                    <a href="/blog/two-losses.html" class="card reveal" style="display: block;">
+                        <h3>Two thousand dollars of tuition, paid to two German cars</h3>
                         <p>
-                            Two $1,000 losses on high-mileage German cars taught me more than
-                            every profitable flip before them &mdash; not because two data points
-                            are meaningful, but because both failures had the same shape.
+                            The worst deals we ever did taught me more than every good one, and
+                            not for the reason people usually say that.
                         </p>
-                        <div class="card-links">
-                            <span class="card-link">
-                                Read
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </span>
-                        </div>
                     </a>
 
-                    <a href="writing/building-telehealth-with-a-doctor.html" class="card reveal" style="display: block;">
-                        <h3>Building telehealth with a doctor as your co-founder</h3>
+                    <a href="/blog/access-control-is-schema.html" class="card reveal" style="display: block;">
+                        <h3>Access control is schema, not middleware</h3>
                         <p>
-                            Docaroo has seen around 1,500 patients. What changes about your
-                            engineering when the blast radius of a bad deploy is someone's health
-                            admin, and access control turns out to be schema rather than
-                            middleware.
+                            The most expensive thing I got wrong on Docaroo was treating "who can
+                            see this" as something to add after the feature worked.
                         </p>
-                        <div class="card-links">
-                            <span class="card-link">
-                                Read
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </span>
-                        </div>
                     </a>
 
-                    <a href="writing/whoop-without-the-subscription.html" class="card reveal span-all" style="display: block;">
-                        <h3>A WHOOP that works without the subscription</h3>
+                    <a href="/blog/my-face-was-600kb.html" class="card reveal" style="display: block;">
+                        <h3>My face was 600KB and other crimes against my own website</h3>
                         <p>
-                            The band is a perfectly good piece of hardware that stops being useful
-                            the moment you stop paying. On forking OpenStrap, and why the most
-                            instructive part was the three-repo split rather than the sensor
-                            maths &mdash; working inside someone else's module boundaries is a
-                            different skill from drawing your own.
+                            I rebuilt this site and then measured it, in that order, which was the
+                            wrong order.
                         </p>
-                        <div class="card-links">
-                            <span class="card-link">
-                                Read
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </span>
-                        </div>
+                    </a>
+
+                    <a href="/blog/forking-someone-elses-code.html" class="card reveal" style="display: block;">
+                        <h3>Forking someone else's code and immediately wanting to ruin it</h3>
+                        <p>
+                            The first thing I wanted to do in the OpenStrap codebase was exactly
+                            the wrong thing, and the codebase would have let me.
+                        </p>
+                    </a>
+                </div>
+
+                <div class="reveal" style="margin-top: 20px;">
+                    <a href="/blog/" class="btn btn-secondary">
+                        Read all 15 posts
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
             </div>
@@ -1532,14 +1523,14 @@
                         <h3>Right now</h3>
                         <p>
                             Semester 2 of 2026 is Monash's Industry-Based Learning programme
-                            &mdash; a competitive placement stream rather than coursework. I'm
+                            , a competitive placement stream rather than coursework. I am
                             spending it as a software engineering intern on Boeing's Factory
                             Systems team (FIT3202 onboarding, then FIT3045 placement, 18 credit
                             points).
                         </p>
                         <p>
                             Before Monash: <strong style="color: var(--text); font-weight: 560;">Lahore Grammar School</strong>,
-                            A-Levels in Mathematics (2022&ndash;2024). STEM Society &mdash; organised
+                            A-Levels in Mathematics (2022&ndash;2024). STEM Society: organised
                             6+ coding and robotics events for 50+ participants, tutored 15+ students
                             in mathematics and ICT.
                         </p>

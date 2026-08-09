@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://isashahid.netlify.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/</loc><priority>0.9</priority></url>
   <url><loc>https://isashahid.netlify.app/yakiamotors.html</loc><priority>0.8</priority></url>
-  <url><loc>https://isashahid.netlify.app/writing/two-losses-that-changed-what-we-buy.html</loc><priority>0.7</priority></url>
-  <url><loc>https://isashahid.netlify.app/writing/building-telehealth-with-a-doctor.html</loc><priority>0.7</priority></url>
-  <url><loc>https://isashahid.netlify.app/writing/whoop-without-the-subscription.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/access-control-is-schema.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/boring-technology-is-a-feature.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/explaining-recursion-to-a-nine-year-old.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/forking-someone-elses-code.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/forty-tickets-a-week.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/hash-chains-are-just-receipts.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/i-am-not-a-designer.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/i-built-a-tool-because-i-was-annoyed.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/my-face-was-600kb.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/my-heart-rate-does-not-need-the-cloud.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/pandas-ate-all-my-ram.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/solo-projects-did-not-prepare-me.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/the-weather-is-a-distribution.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/things-i-believed-that-were-wrong.html</loc><priority>0.7</priority></url>
+  <url><loc>https://isashahid.netlify.app/blog/two-losses.html</loc><priority>0.7</priority></url>
 </urlset>

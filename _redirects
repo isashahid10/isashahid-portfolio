@@ -1,0 +1,8 @@
+# Old /writing URLs were live briefly; keep them working.
+/writing/whoop-without-the-subscription      /blog/forking-someone-elses-code.html   301
+/writing/whoop-without-the-subscription.html /blog/forking-someone-elses-code.html   301
+/writing/two-losses-that-changed-what-we-buy      /blog/two-losses.html               301
+/writing/two-losses-that-changed-what-we-buy.html /blog/two-losses.html               301
+/writing/building-telehealth-with-a-doctor      /blog/access-control-is-schema.html   301
+/writing/building-telehealth-with-a-doctor.html /blog/access-control-is-schema.html   301
+/writing/*                                   /blog/                                  301

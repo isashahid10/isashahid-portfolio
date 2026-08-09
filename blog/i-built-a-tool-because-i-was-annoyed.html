@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="FlipIQ exists because the information needed to spot our worst pattern was sitting in three people&#x27;s heads and nowhere else.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>I specced a whole product because I was annoyed at a group chat | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/i-built-a-tool-because-i-was-annoyed.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="I specced a whole product because I was annoyed at a group chat">
+    <meta property="og:description" content="FlipIQ exists because the information needed to spot our worst pattern was sitting in three people&#x27;s heads and nowhere else.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/i-built-a-tool-because-i-was-annoyed.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="I specced a whole product because I was annoyed at a group chat">
+    <meta name="twitter:description" content="FlipIQ exists because the information needed to spot our worst pattern was sitting in three people&#x27;s heads and nowhere else.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>I specced a whole product because I was annoyed at a group chat</h1>
+        <p class="standfirst">FlipIQ exists because the information needed to spot our worst pattern was sitting in three people's heads and nowhere else.</p>
+        <div class="tags"><span class="tag">Yakiamotors</span><span class="tag">FlipIQ</span><span class="tag">Product</span></div>
+
+        <p>After we pivoted the car business, the thing that bothered me was not the money. It was how long it took to notice.</p>
+        <p>The pattern was there in the data. It just was not anywhere you could look at it. It was spread across three people's memories, a group chat, and a spreadsheet somebody updated when they felt like it. Nobody was tracking outcomes by category, so the only way to spot a bleeding category was for one person to have a feeling and be brave enough to say it out loud.</p>
+        <p>That is a terrible detection system and it cost us two thousand dollars.</p>
+        <h2>What FlipIQ is</h2>
+        <p>A deal scoring tool with four pieces:</p>
+        <ul><li><strong>Listing alert engine</strong>, because the good deals are gone in hours and refreshing a website is not a strategy</li><li><strong>Automatic comparison against Carsales market valuations</strong>, so a price is scored against something rather than against vibes</li><li><strong>Kanban pipeline</strong> for cars in progress, because three people and six cars is genuinely more state than a human tracks reliably</li><li><strong>Flip analytics database</strong>, which is the actual point</li></ul>
+        <p>The first three are convenience. The fourth is the one that exists so the next time a category is quietly losing us money, it shows up as a number instead of a hunch.</p>
+        <h2>Prioritising it honestly</h2>
+        <p>I ranked the backlog with RICE, and the spec was driven by analysis of 35 or so real flips rather than a wishlist. That distinction matters more than the framework does. RICE is arithmetic. It is only as good as whether your reach and impact numbers came from anywhere real.</p>
+        <p>Doing it against actual flip data changed the order. Things I was excited to build turned out to affect two deals a year. The boring database that nobody would demo turned out to be the thing that would have caught the pattern.</p>
+        <h2>The general version</h2>
+        <p><strong>Most tools worth building come from noticing that you keep doing something badly, not from noticing a gap in a market.</strong></p>
+        <p>I did not do market research and conclude that car flippers need software. I got annoyed, twice, at the same missing piece of information. That is a much better signal, because it comes with a guaranteed first user who is definitely motivated, which is me.</p>
+        <p>The failure mode of this approach is building something only you want. The saving grace is that you find that out cheaply, and the tool is still useful to you, which is more than most side projects manage.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

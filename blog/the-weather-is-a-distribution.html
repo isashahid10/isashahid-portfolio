@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>The weather is a distribution and everyone forgets | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/the-weather-is-a-distribution.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The weather is a distribution and everyone forgets">
+    <meta property="og:description" content="STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/the-weather-is-a-distribution.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The weather is a distribution and everyone forgets">
+    <meta name="twitter:description" content="STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>The weather is a distribution and everyone forgets</h1>
+        <p class="standfirst">STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.</p>
+        <div class="tags"><span class="tag">STORMCAST</span><span class="tag">Forecasting</span><span class="tag">Electron</span></div>
+
+        <p>If you ask your phone what tomorrow's high is, it says a number. One number. Twenty four degrees.</p>
+        <p>That number is a lie of omission. What the model actually produced was a spread of possible outcomes, and somebody picked the middle of it and threw the rest away because a range does not fit on a lock screen.</p>
+        <h2>Why that gap is interesting</h2>
+        <p>The ECMWF ensemble runs the forecast 51 times with slightly different starting conditions. You get 51 answers. Sometimes they cluster tightly, which means the atmosphere is being predictable and you can be confident. Sometimes they spray across eight degrees, which means tomorrow is genuinely up for grabs and anyone quoting you a single number is guessing with extra steps.</p>
+        <p>Those two situations look identical if all you see is the average.</p>
+        <p>STORMCAST ingests the full 51 member ensemble for specific airport weather stations and builds an actual temperature distribution instead of a point estimate. The bet is that markets pricing weather outcomes are often anchored to the single-number city forecast, and the distribution knows something the headline does not.</p>
+        <h2>The architecture, which is a bit silly</h2>
+        <p>Electron and Vite for the interface, Python for the forecasting work, talking to each other over a local socket bridge. A Node frontend and a Python bot sharing a port like flatmates.</p>
+        <p>Is this the architecture I would choose from scratch? Probably not. It happened because the forecasting and statistics ecosystem lives in Python and I was not going to reimplement it in JavaScript out of tidiness. Use the language that already has the libraries, then pay a small tax at the boundary. The tax was real but much smaller than the rewrite.</p>
+        <h2>Position sizing, or how to lose slower</h2>
+        <p>Kelly optimal sizing is in there, and the honest reason is that the failure mode of a system like this is not being wrong. Being wrong is fine and expected. The failure mode is being right on average and still going broke because you bet too much on one thing at the wrong moment.</p>
+        <p>I also built it with paper trading and calibration analytics before anything else, which in hindsight is the only defensible order. <strong>A signal you have not measured is a hunch with a user interface.</strong> Calibration asks the uncomfortable question: when this thing said 70 percent, did it happen about 70 percent of the time? If you cannot answer that, you do not have a model, you have a mood.</p>
+        <h2>What I would tell past me</h2>
+        <p>Build the scoreboard before you build the player. It is much less fun and it is the only way you ever find out if any of this works.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

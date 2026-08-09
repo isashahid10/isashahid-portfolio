@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in &#x27;your browser is not responding&#x27;.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>pandas ate all my RAM and I deserved it | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/pandas-ate-all-my-ram.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="pandas ate all my RAM and I deserved it">
+    <meta property="og:description" content="CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in &#x27;your browser is not responding&#x27;.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/pandas-ate-all-my-ram.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="pandas ate all my RAM and I deserved it">
+    <meta name="twitter:description" content="CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in &#x27;your browser is not responding&#x27;.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>pandas ate all my RAM and I deserved it</h1>
+        <p class="standfirst">CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in 'your browser is not responding'.</p>
+        <div class="tags"><span class="tag">CSV Insight Pro</span><span class="tag">Python</span><span class="tag">Performance</span></div>
+
+        <p>The pitch for CSV Insight Pro is simple. Drag in any CSV, get real statistics and charts back, write no code. It is aimed at people who have a spreadsheet and a question and no interest whatsoever in learning Python.</p>
+        <p>The first version worked beautifully on the file I tested it with. That file had 400 rows.</p>
+        <h2>What went wrong, predictably</h2>
+        <p><code>pd.read_csv(everything)</code> is a wonderful function right up until the file is bigger than your patience. Load the whole thing, then run every summary over the whole thing, then build every chart over the whole thing. Three full passes through memory before the user sees a pixel.</p>
+        <p>On a 100,000 row file this is the software equivalent of standing very still and hoping.</p>
+        <h2>What fixed it</h2>
+        <p><strong>Chunked reads.</strong> Stop pretending the file fits. Read it in pieces, accumulate what you need per piece, discard the piece. Most statistics you actually want (counts, sums, min, max, missing value tallies) accumulate perfectly happily and do not care that they never saw the whole table at once.</p>
+        <p><strong>Vectorised operations instead of loops.</strong> This is the one everybody tells you and nobody believes until they measure it. Writing a Python <code>for</code> loop over rows feels productive and is roughly the speed of continental drift. The same operation expressed as a whole column operation drops into optimised C and finishes before you look up.</p>
+        <p><strong>Automatic type inference that expects a mess.</strong> Real CSVs are horrible. A column is integers for 900 rows and then somebody typed "N/A". Another one is dates in three formats because three humans filled it in. If your type detection assumes clean data it will guess object, silently treat numbers as strings, and produce statistics that are technically computed and completely wrong. Handling mixed quality columns was more code than the actual maths.</p>
+        <h2>The lesson that transferred</h2>
+        <p>I was optimising the wrong thing for a while. I kept trying to make the computation faster when the computation was never the problem. The problem was <strong>how many times I touched the data</strong>, and no amount of clever maths fixes three unnecessary passes.</p>
+        <p>Ask what the shape of the work is before you ask how fast each piece runs. I have since caught myself about to make this exact mistake in three other projects, which I choose to interpret as progress.</p>
+        <p>Code is at <a href="https://github.com/isashahid10/csv-insight-pro" target="_blank" rel="noopener noreferrer">github.com/isashahid10/csv-insight-pro</a>.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Docaroo runs on the least interesting stack I could assemble, on purpose, and it is the best decision I made.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Boring technology is a feature you ship to yourself | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/boring-technology-is-a-feature.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Boring technology is a feature you ship to yourself">
+    <meta property="og:description" content="Docaroo runs on the least interesting stack I could assemble, on purpose, and it is the best decision I made.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/boring-technology-is-a-feature.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Boring technology is a feature you ship to yourself">
+    <meta name="twitter:description" content="Docaroo runs on the least interesting stack I could assemble, on purpose, and it is the best decision I made.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Boring technology is a feature you ship to yourself</h1>
+        <p class="standfirst">Docaroo runs on the least interesting stack I could assemble, on purpose, and it is the best decision I made.</p>
+        <div class="tags"><span class="tag">Docaroo</span><span class="tag">Next.js</span><span class="tag">Pragmatism</span></div>
+
+        <p>The Docaroo stack is Next.js, Supabase, Daily.co for video, Stripe for payments. If that sounds like it was chosen by someone who wanted to go home on time, correct.</p>
+        <p>There is nothing clever in it. That is the point, and it took me a while to be at peace with that.</p>
+        <h2>Complexity budget</h2>
+        <p>You get a fixed amount of complexity you can hold in your head. Everything you spend on infrastructure is not available for the domain, and in a domain like healthcare the domain is where all the actual difficulty lives.</p>
+        <p>Every hour I would have spent being interesting about the database is an hour not spent working out what happens when a consultation drops out halfway, or how a certificate should be generated, or what a clinician needs on screen while they are also talking to a human being.</p>
+        <p>Nobody has ever booked a telehealth appointment because of the ORM.</p>
+        <h2>The bill is a teacher</h2>
+        <p>I own the infrastructure spend, which turns out to be an extremely effective form of education. When it is your card, you stop reaching for the managed service that costs 200 a month to save you a day of work.</p>
+        <p>You also get honest fast about what the product needs versus what would be nice. Nice things have a price now. It is remarkable how many architectural opinions evaporate when they are itemised.</p>
+        <h2>Where I do spend</h2>
+        <p>Video and payments are both bought, not built, and I will defend that forever. Both are areas where being 95 percent correct is worth nothing. A video call that works most of the time is a broken product. A payment flow that is nearly right is a support nightmare and possibly a legal one.</p>
+        <p><strong>Build the thing that is your actual product. Buy the things where the failure mode is somebody else's specialty.</strong></p>
+        <h2>The uncomfortable bit</h2>
+        <p>Boring is not the same as easy, and I want to be careful not to make this sound wiser than it is. The stack being dull does not mean the work is dull. It means the difficulty is concentrated where it should be, which is in understanding the problem rather than in operating your own infrastructure.</p>
+        <p>If anything the boring stack raises the standard, because you no longer get to be pleased with yourself about the plumbing. The plumbing works. Now go and do the hard part.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

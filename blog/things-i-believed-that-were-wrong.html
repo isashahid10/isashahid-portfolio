@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="A running list, kept mainly so I stop repeating myself.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Things I believed that turned out to be wrong | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/things-i-believed-that-were-wrong.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Things I believed that turned out to be wrong">
+    <meta property="og:description" content="A running list, kept mainly so I stop repeating myself.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/things-i-believed-that-were-wrong.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Things I believed that turned out to be wrong">
+    <meta name="twitter:description" content="A running list, kept mainly so I stop repeating myself.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>Things I believed that turned out to be wrong</h1>
+        <p class="standfirst">A running list, kept mainly so I stop repeating myself.</p>
+        <div class="tags"><span class="tag">Learning</span><span class="tag">Opinions</span></div>
+
+        <p>A running list. Some of these were expensive.</p>
+        <h2>That local-first would be harder</h2>
+        <p>I assumed building without a backend was the ascetic option, more work for ideological reasons. It deleted an enormous amount of work instead. No auth, no sync conflicts, no bill, no retention policy. The complexity was never the feature, it was the machinery around synchronising the feature.</p>
+        <p>Caveat: this only holds when the data genuinely belongs to one person. Get that wrong and you build a worse server inside your app.</p>
+        <h2>That two data points cannot be a pattern</h2>
+        <p>They can, if the failures share a mechanism. Two losses from the same cause is a completely different signal to two losses from unrelated causes. I lost about two thousand dollars learning to tell those apart.</p>
+        <h2>That process was for big slow companies</h2>
+        <p>Version control discipline, code review, release process. I thought these were things that happen to organisations when they stop being able to move. They are what makes a change six months later a decision instead of a gamble. I was confusing "I do not need this yet" with "this has no value".</p>
+        <h2>That being fast was a property of me</h2>
+        <p>It was mostly a property of being the only person who had to agree with me. Take that away and a lot of my speed turns out to have been unexamined habit that only worked because I held all the context in my head and never had to hand it over.</p>
+        <h2>That the user was being careless</h2>
+        <p>When the same avoidable mistake arrives forty times, the mistake is designed in. Blaming the user is comfortable and it stops the investigation dead, which is precisely why it is so appealing.</p>
+        <h2>That design sense was innate</h2>
+        <p>It is substantially a list of about twenty specific things that people have already worked out and published. I read some of it and my work got better in a day. That is not talent, that is homework I had not done.</p>
+        <h2>That I should optimise the computation</h2>
+        <p>I spent a while making maths faster when the actual problem was doing three unnecessary passes over the data. Ask what shape the work is before you ask how fast each piece runs.</p>
+        <h2>That an explanation failing says something about the listener</h2>
+        <p>It says something about the explanation. A nine year old taught me this, repeatedly, by asking "but why though" until I found a better metaphor.</p>
+        <h2>That measuring could wait</h2>
+        <p>I shipped a 600 KB photo of my own face and spent that same week fine tuning easing curves. Nothing warns you. The site works. The only way you find out is deciding it is a thing you check.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

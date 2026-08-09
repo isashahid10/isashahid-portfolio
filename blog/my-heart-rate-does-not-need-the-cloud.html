@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Working out how much of a fitness tracker genuinely requires a server. The answer is close to none of it, which raises an awkward question.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>My heart rate does not need to visit a data centre | Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/blog/my-heart-rate-does-not-need-the-cloud.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="My heart rate does not need to visit a data centre">
+    <meta property="og:description" content="Working out how much of a fitness tracker genuinely requires a server. The answer is close to none of it, which raises an awkward question.">
+    <meta property="og:url" content="https://isashahid.netlify.app/blog/my-heart-rate-does-not-need-the-cloud.html">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My heart rate does not need to visit a data centre">
+    <meta name="twitter:description" content="Working out how much of a fitness tracker genuinely requires a server. The answer is close to none of it, which raises an awkward question.">
+    <meta name="twitter:image" content="https://isashahid.netlify.app/assets/og.png">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/blog/" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Blog
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Blog</span>
+        <h1>My heart rate does not need to visit a data centre</h1>
+        <p class="standfirst">Working out how much of a fitness tracker genuinely requires a server. The answer is close to none of it, which raises an awkward question.</p>
+        <div class="tags"><span class="tag">WHOOP</span><span class="tag">Privacy</span><span class="tag">On-device</span></div>
+
+        <p>Here is a question I did not think to ask for an embarrassingly long time: why does my fitness tracker need the internet?</p>
+        <p>Not "why does the company want it to". That one is easy. I mean technically. What part of turning a heart rate signal into a recovery number actually requires a machine in another country.</p>
+        <h2>Going through it honestly</h2>
+        <p>Heart rate variability is arithmetic on the gaps between beats. Sleep staging is pattern recognition on signals the band already has. Strain and recovery are published, citable methods that people wrote papers about. Every one of these is maths on a stream of numbers that is already, physically, on your wrist.</p>
+        <p>A phone from five years ago can do all of that without noticing. There is nothing here that needs a GPU farm. There is nothing here that needs to leave the building.</p>
+        <p>So the cloud is not doing computation. It is doing billing.</p>
+        <h2>What changes when you decide it stays local</h2>
+        <p>I built my fork on the assumption that nothing leaves the phone, and the surprise was how much work that deleted rather than added.</p>
+        <p>No accounts, so no signup flow, no password reset, no "verify your email" template I would have written badly. No sync, so no conflict resolution, and no bug where your phone and the server disagree about last Tuesday. No server, so no bill, no uptime worry, and no 2am problem that is mine. No data retention policy, because there is nothing retained anywhere I do not personally hold.</p>
+        <p>I had genuinely believed local-first would be the harder path. It was the lazier one. Turns out most of the complexity in a small app is not the feature, it is the machinery around synchronising the feature.</p>
+        <h2>The bit that is not lazy</h2>
+        <p>Local-first is only free when the data is yours alone. The moment two people need to see the same thing, you need a server and all the misery that comes with it, and pretending otherwise gives you a worse server implemented badly inside your app.</p>
+        <p>So the honest version of this post is not "the cloud is a scam". It is: <strong>work out whether your data is genuinely multiplayer before you build for multiplayer.</strong> Mine is one person and one band. Yours might not be.</p>
+        <p>The best way to protect a piece of sensitive data is to never have collected it. The second best is for it to never leave the device it was created on. Both of those were available here and I would have missed them if I had started by drawing a backend.</p>
+
+        <div class="post-foot">
+            <a href="/blog/">Back to all posts</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>
