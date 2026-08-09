@@ -152,39 +152,6 @@ Code is at [github.com/isashahid10/codeproof](https://github.com/isashahid10/cod
 """
 },
 {
-"slug": "pandas-ate-all-my-ram",
-"title": "pandas ate all my RAM and I deserved it",
-"blurb": "CSV Insight Pro processes 100,000 row files in under 30 seconds. The first version processed them in 'your browser is not responding'.",
-"tags": ["CSV Insight Pro", "Python", "Performance"],
-"body": """
-The pitch for CSV Insight Pro is simple. Drag in any CSV, get real statistics and charts back, write no code. It is aimed at people who have a spreadsheet and a question and no interest whatsoever in learning Python.
-
-The first version worked beautifully on the file I tested it with. That file had 400 rows.
-
-## What went wrong, predictably
-
-`pd.read_csv(everything)` is a wonderful function right up until the file is bigger than your patience. Load the whole thing, then run every summary over the whole thing, then build every chart over the whole thing. Three full passes through memory before the user sees a pixel.
-
-On a 100,000 row file this is the software equivalent of standing very still and hoping.
-
-## What fixed it
-
-**Chunked reads.** Stop pretending the file fits. Read it in pieces, accumulate what you need per piece, discard the piece. Most statistics you actually want (counts, sums, min, max, missing value tallies) accumulate perfectly happily and do not care that they never saw the whole table at once.
-
-**Vectorised operations instead of loops.** This is the one everybody tells you and nobody believes until they measure it. Writing a Python `for` loop over rows feels productive and is roughly the speed of continental drift. The same operation expressed as a whole column operation drops into optimised C and finishes before you look up.
-
-**Automatic type inference that expects a mess.** Real CSVs are horrible. A column is integers for 900 rows and then somebody typed "N/A". Another one is dates in three formats because three humans filled it in. If your type detection assumes clean data it will guess object, silently treat numbers as strings, and produce statistics that are technically computed and completely wrong. Handling mixed quality columns was more code than the actual maths.
-
-## The lesson that transferred
-
-I was optimising the wrong thing for a while. I kept trying to make the computation faster when the computation was never the problem. The problem was **how many times I touched the data**, and no amount of clever maths fixes three unnecessary passes.
-
-Ask what the shape of the work is before you ask how fast each piece runs. I have since caught myself about to make this exact mistake in three other projects, which I choose to interpret as progress.
-
-Code is at [github.com/isashahid10/csv-insight-pro](https://github.com/isashahid10/csv-insight-pro).
-"""
-},
-{
 "slug": "the-weather-is-a-distribution",
 "title": "The weather is a distribution and everyone forgets",
 "blurb": "STORMCAST came out of noticing that a forecast is a range of outcomes, and most people trading on weather are using a single number.",
