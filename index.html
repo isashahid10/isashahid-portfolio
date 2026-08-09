@@ -1133,18 +1133,26 @@
                     <article class="card reveal">
                         <h3>CodeProof</h3>
                         <p>
-                            A tamper-evident verification tool that hashes source files and links
-                            them into an append-only chain, so any retrospective edit invalidates
-                            every downstream record. It implements SHA-256 hash chaining, snapshot
-                            generation, and a verification command that reports exactly which file
-                            broke the chain and when. Built for academic integrity and audit cases
-                            where proving <em>when</em> work was written matters as much as the
-                            work itself.
+                            A VS Code extension that records your work as you write it, then proves
+                            nobody edited the record afterwards. It snapshots the workspace on an
+                            interval, links every snapshot into a SHA-256 chain so any retrospective
+                            edit invalidates everything downstream, and stores the whole event log
+                            locally in SQLite. Nothing leaves the machine.
+                        </p>
+                        <p>
+                            On top of that: a replay player that scrubs back through a session like
+                            video, a flag analyser that surfaces large pastes and unusual jumps for
+                            human review, and exportable PDF reports with Gemini-written narratives
+                            of how the work actually progressed. Built for academic integrity cases,
+                            where proving <em>when</em> something was written matters as much as
+                            what was written.
                         </p>
                         <div class="tags">
                             <span class="tag">TypeScript</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">SHA-256 hash chaining</span>
+                            <span class="tag">VS Code Extension API</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Gemini API</span>
+                            <span class="tag">SHA-256 chaining</span>
                         </div>
                         <div class="card-links">
                             <a href="https://github.com/isashahid10/codeproof" class="card-link" target="_blank" rel="noopener noreferrer">

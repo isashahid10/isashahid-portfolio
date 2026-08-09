@@ -50,14 +50,14 @@
         <p class="standfirst">CodeProof exists because 'I definitely wrote this myself' is not evidence, and I wanted to find out how little machinery it takes to make it evidence.</p>
         <div class="tags"><span class="tag">CodeProof</span><span class="tag">TypeScript</span><span class="tag">Cryptography</span></div>
 
-        <p>Academic integrity tooling mostly answers "does this look like something else". CodeProof tries to answer a different question: <strong>when was this written, and has it been quietly edited since.</strong></p>
+        <p>Academic integrity tooling mostly answers "does this look like something else". CodeProof, which is a VS Code extension I built, tries to answer a different question: <strong>when was this written, and has it been quietly edited since.</strong></p>
         <p>Those are not the same question and the second one turns out to be much easier.</p>
         <h2>The whole idea in one paragraph</h2>
         <p>Hash a file. Store the hash. Hash the next snapshot together with the previous hash. Repeat. Now every record depends on the one before it, so if you go back and change something in the middle, every hash after it stops matching. You do not need to detect the edit. The chain detects it for you and cannot help itself.</p>
         <p>That is it. That is the entire trick. It is the same idea underneath a lot of things that get described with far more excitement than it deserves.</p>
         <h2>What I actually had to build</h2>
-        <ul><li>SHA-256 hashing of source files</li><li>Snapshot generation so there is something to chain in the first place</li><li>A verification command that walks the chain and reports <strong>exactly which file broke it and when</strong>, because "verification failed" is a useless error message and I have received enough of those to know</li></ul>
-        <p>That last one is the only part I would defend as design work rather than plumbing. An integrity tool that tells you something is wrong without telling you where is just anxiety with a CLI.</p>
+        <ul><li>Snapshot the workspace on a timer, so there is something to chain in the first place</li><li>SHA-256 hash every snapshot against the previous one</li><li>Store the whole event log locally in SQLite, because it never leaves your machine</li><li>A replay player that scrubs back through a session like video</li><li>A flag analyser that surfaces large pastes and odd jumps <strong>for a human to review</strong>, rather than accusing anyone of anything</li><li>PDF report export, with the narrative written by Gemini</li><li>A verification step that reports <strong>exactly which file broke the chain and when</strong>, because "verification failed" is a useless error message and I have received enough of those to know</li></ul>
+        <p>That last one is the only part I would defend as design work rather than plumbing. An integrity tool that tells you something is wrong without telling you where is just anxiety with a progress bar.</p>
         <h2>What it does not do</h2>
         <p>It does not prove you wrote the code. Nothing can. You could type someone else's work in by hand and the chain would happily certify that you typed it slowly.</p>
         <p>What it proves is the shape of the process: that the work existed at a sequence of points in time, and that the record has not been retroactively tidied up. For an audit where the question is "did this appear fully formed at 2am the night before", that shape is the whole argument.</p>

@@ -112,7 +112,7 @@ The best way to protect a piece of sensitive data is to never have collected it.
 "blurb": "CodeProof exists because 'I definitely wrote this myself' is not evidence, and I wanted to find out how little machinery it takes to make it evidence.",
 "tags": ["CodeProof", "TypeScript", "Cryptography"],
 "body": """
-Academic integrity tooling mostly answers "does this look like something else". CodeProof tries to answer a different question: **when was this written, and has it been quietly edited since.**
+Academic integrity tooling mostly answers "does this look like something else". CodeProof, which is a VS Code extension I built, tries to answer a different question: **when was this written, and has it been quietly edited since.**
 
 Those are not the same question and the second one turns out to be much easier.
 
@@ -124,11 +124,15 @@ That is it. That is the entire trick. It is the same idea underneath a lot of th
 
 ## What I actually had to build
 
-- SHA-256 hashing of source files
-- Snapshot generation so there is something to chain in the first place
-- A verification command that walks the chain and reports **exactly which file broke it and when**, because "verification failed" is a useless error message and I have received enough of those to know
+- Snapshot the workspace on a timer, so there is something to chain in the first place
+- SHA-256 hash every snapshot against the previous one
+- Store the whole event log locally in SQLite, because it never leaves your machine
+- A replay player that scrubs back through a session like video
+- A flag analyser that surfaces large pastes and odd jumps **for a human to review**, rather than accusing anyone of anything
+- PDF report export, with the narrative written by Gemini
+- A verification step that reports **exactly which file broke the chain and when**, because "verification failed" is a useless error message and I have received enough of those to know
 
-That last one is the only part I would defend as design work rather than plumbing. An integrity tool that tells you something is wrong without telling you where is just anxiety with a CLI.
+That last one is the only part I would defend as design work rather than plumbing. An integrity tool that tells you something is wrong without telling you where is just anxiety with a progress bar.
 
 ## What it does not do
 
