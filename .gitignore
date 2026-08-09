@@ -1,0 +1,27 @@
+# This repo is PUBLIC and Netlify serves everything committed to it.
+# Anything listed here would otherwise be readable at
+# https://isashahid.netlify.app/<path> as well as on GitHub.
+
+# Private career material — transcript (incl. student ID and full grades),
+# résumé working files, and live job applications.
+resume/
+apply/
+
+# Agent tooling / skills
+.agents/
+.claude/
+skills-lock.json
+
+# OS + editor cruft
+.DS_Store
+**/.DS_Store
+Thumbs.db
+*.swp
+
+# Build noise
+node_modules/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk

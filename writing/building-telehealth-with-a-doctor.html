@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="What changes about your engineering when your co-founder is a practising GP, your users are patients, and the data you store is medical.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>Building a telehealth product with a doctor as your co-founder — Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/writing/building-telehealth-with-a-doctor.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Building a telehealth product with a doctor as your co-founder">
+    <meta property="og:description" content="What changes about your engineering when your users are patients and the data is medical.">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/#writing" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Isa Shahid
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Writing</span>
+        <h1>Building a telehealth product with a doctor as your co-founder</h1>
+        <p class="standfirst">
+            Docaroo has seen around 1,500 patients. Almost everything I believed about
+            shipping fast had to be renegotiated.
+        </p>
+
+        <div class="tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Stripe</span>
+            <span class="tag">Daily.co</span>
+        </div>
+
+        <p>
+            I'm the technical co-founder of Docaroo. My co-founder is a practising GP. That
+            single fact has shaped the product more than any architectural decision I've
+            made, and it's the part I'd most want to explain to another engineer.
+        </p>
+
+        <p>
+            The stack itself is unremarkable, deliberately: Next.js on the front,
+            Supabase for data and auth, Daily.co for the video consultation, Stripe for
+            payments, plus automated medical certificate generation and dashboards for
+            clinicians. Nothing exotic. When you're a small team and the domain is
+            unforgiving, the boring choice is the correct one — every hour spent on
+            infrastructure novelty is an hour not spent on the thing that's actually hard.
+        </p>
+
+        <h2>"Move fast and break things" doesn't survive contact with a patient</h2>
+
+        <p>
+            The instinct I brought from every previous project was to ship the smallest
+            thing that works and iterate against user feedback. That instinct is mostly
+            right and occasionally dangerous, and telehealth is where you find out which.
+        </p>
+
+        <p>
+            A broken flow in a side project means a frustrated user. A broken flow here
+            means someone who needed a medical certificate for work doesn't get one, or a
+            consultation drops halfway through, or — worst case — a record ends up
+            somewhere it shouldn't. The blast radius of a bad deploy is a person's health
+            admin, at a moment when they're already unwell.
+        </p>
+
+        <p>
+            What actually changed in practice was narrower than "be careful." It was that
+            the consultation path stopped being a place for experiments. Peripheral things
+            — dashboards, onboarding copy, pricing presentation — still move quickly.
+            The path from "patient books" to "patient has what they came for" does not
+            change casually.
+        </p>
+
+        <h2>Data handling is a design problem, not a checkbox</h2>
+
+        <p>
+            I designed the data handling and access controls around patient records, and
+            the thing I got wrong initially was treating access control as something you
+            bolt on once the feature works. It isn't. Who can see a record is a product
+            question that determines your schema, and retrofitting it means rewriting
+            queries you've already shipped.
+        </p>
+
+        <p>
+            The useful discipline turned out to be asking, for every new field: who needs
+            to read this, who needs to write it, and what is the smallest set of people for
+            whom the answer is yes? Most of the time the honest answer is fewer people than
+            the convenient design assumes. Storing less, and exposing less, is cheaper than
+            defending more.
+        </p>
+
+        <blockquote>
+            The best way to protect a piece of sensitive data is to not have collected it.
+            The second best is for very few code paths to be able to reach it.
+        </blockquote>
+
+        <h2>The co-founder who tells you the feature is wrong</h2>
+
+        <p>
+            The highest-leverage thing about building with a clinician is that product
+            decisions get checked against how medicine is actually practised, before they
+            ship rather than after.
+        </p>
+
+        <p>
+            Things that look obviously good from an engineering seat frequently aren't.
+            You can design a flow that's beautifully efficient and has the clinician
+            entering information in an order no doctor would ever gather it, or that
+            optimises a step which — in a real consult — is where the clinician is
+            thinking, not typing. I could not have caught those. They aren't software
+            problems.
+        </p>
+
+        <p>
+            What that gave me was a rule I now apply everywhere: when a feature is in a
+            domain you don't practise, your intuition about "obvious" improvements is
+            worth much less than you feel it is. Find the person who does the work and let
+            them tell you which of your good ideas are bad.
+        </p>
+
+        <h2>Prioritising against three numbers</h2>
+
+        <p>
+            With limited time, I prioritise the roadmap against acquisition cost,
+            retention, and clinician throughput. That last one is easy to miss and matters
+            enormously: a marketplace with two sides fails on whichever side runs out of
+            capacity first. Work that lets a clinician handle more consultations well is
+            worth as much as work that brings more patients in — and it's much less
+            obvious, because patients are the ones who look like "users."
+        </p>
+
+        <p>
+            I also own the infrastructure spend, which is an underrated teacher. When the
+            bill is yours, you stop reaching for the managed service that costs $200/month
+            to save a day of work, and you get honest very quickly about what the product
+            actually needs.
+        </p>
+
+        <h2>What I'd tell myself at the start</h2>
+
+        <ul>
+            <li><strong>Pick boring infrastructure.</strong> The domain is where your complexity budget should go.</li>
+            <li><strong>Decide who can read each field before you write the migration.</strong> Access control is schema, not middleware.</li>
+            <li><strong>Separate the critical path from everything else</strong> and give them different rules for how fast you're allowed to move.</li>
+            <li><strong>Your non-technical co-founder is not a stakeholder to manage.</strong> In a domain you don't practise, they're the source of truth.</li>
+        </ul>
+
+        <div class="post-foot">
+            <a href="/#writing">&larr; More writing</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>

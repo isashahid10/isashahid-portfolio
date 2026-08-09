@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Two $1,000 losses on German cars taught me more about inventory strategy than every profitable flip before them. How Yakiamotors pivoted, and why the loss data mattered more than the wins.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <title>The two losses that changed what we buy — Isa Shahid</title>
+    <link rel="canonical" href="https://isashahid.netlify.app/writing/two-losses-that-changed-what-we-buy.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The two losses that changed what we buy">
+    <meta property="og:description" content="Two $1,000 losses taught me more about inventory strategy than every profitable flip before them.">
+    <meta property="og:image" content="https://isashahid.netlify.app/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script>
+        (function () {
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            document.documentElement.setAttribute('data-theme',
+                s || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/#writing" class="back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Isa Shahid
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="1.8" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.2"/><line x1="4.4" y1="4.4" x2="5.9" y2="5.9"/><line x1="18.1" y1="18.1" x2="19.6" y2="19.6"/><line x1="1.8" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.2" y2="12"/><line x1="4.4" y1="19.6" x2="5.9" y2="18.1"/><line x1="18.1" y1="5.9" x2="19.6" y2="4.4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <article class="wrap">
+        <span class="eyebrow">Writing</span>
+        <h1>The two losses that changed what we buy</h1>
+        <p class="standfirst">
+            We started Yakiamotors with $3,200 of borrowed capital. The two worst deals we
+            ever did taught us more than every profitable one before them.
+        </p>
+
+        <div class="tags">
+            <span class="tag">Yakiamotors</span>
+            <span class="tag">Build-measure-learn</span>
+            <span class="tag">Inventory strategy</span>
+        </div>
+
+        <p>
+            Vehicle arbitrage is a simple business to describe and a hard one to do. You
+            buy a car below what it's worth, you make it worth what it should be, and you
+            sell it. The entire skill is in the first step, and the entire risk is that you
+            are wrong about it in a way you don't discover for six weeks.
+        </p>
+
+        <p>
+            We started with $3,200 borrowed between three of us. Over 35+ flips we grew
+            that to roughly a $38,000 capital base. That number is the headline, and it's
+            the one that goes on a résumé. It's also the least interesting thing about the
+            business, because it's the <em>output</em>. What actually produced it was a
+            decision we only made because we lost money twice in a row.
+        </p>
+
+        <h2>The thesis that felt smart</h2>
+
+        <p>
+            Early on we liked high-mileage German cars. The logic was seductive and, in
+            isolation, correct: a ten-year-old European sedan has a badge that holds
+            perceived value, and depreciation has already done its worst. You can buy one
+            cheap. The spread between what a nervous private seller accepts and what the
+            car lists for is wide.
+        </p>
+
+        <p>
+            What that logic ignores is that the spread is wide <em>for a reason</em>. The
+            market had priced in something we hadn't: on a high-mileage German car, the
+            repair bill is not a fixed cost you can estimate up front. It's a distribution
+            with a very long tail. Most of the time you spend a few hundred dollars. Some
+            of the time a suspension component, an electronic module, or a cooling system
+            turns a $600 refurbishment into a $2,000 one, and the specialist parts and
+            labour that make those cars desirable are the same things that make them
+            expensive to fix.
+        </p>
+
+        <p>
+            We lost more than $1,000 on one. Then we lost more than $1,000 on another.
+        </p>
+
+        <h2>Two data points shouldn't be a pattern</h2>
+
+        <p>
+            Here is the part I actually think about. Two losses is not statistically
+            meaningful. If you'd shown me those two deals as someone else's numbers, I
+            would have said it was variance and told them to keep going — that's a
+            defensible reading, and plenty of businesses die from overreacting to a small
+            sample.
+        </p>
+
+        <p>
+            What made it a pattern rather than noise wasn't the count. It was that both
+            losses had the <em>same shape</em>: the purchase price was fine, our valuation
+            of the car was fine, and the thing that killed the margin was a repair cost we
+            could not have bounded before buying. The failure wasn't that we'd been unlucky
+            twice. It was that our model had a term in it — refurbishment cost — that we
+            were treating as an estimate when it was actually a random variable with a fat
+            tail.
+        </p>
+
+        <blockquote>
+            You don't need a large sample to act when the failures share a mechanism. Two
+            losses with the same cause is a different signal from two losses with different
+            causes.
+        </blockquote>
+
+        <p>
+            That reframing is what let us move fast on a small sample without kidding
+            ourselves. We weren't concluding "German cars are bad." We were concluding
+            "our margin model is wrong for any vehicle where repair cost has high
+            variance," and German inventory was simply the clearest instance of it.
+        </p>
+
+        <h2>The pivot</h2>
+
+        <p>
+            We repositioned to Japanese-make city cars. Less glamorous, thinner headline
+            spreads, and a much more boring repair distribution: parts are commodity,
+            labour is standard, and the worst case is close to the average case. The whole
+            point was to trade a wide-but-unpredictable margin for a narrower one we could
+            actually forecast.
+        </p>
+
+        <p>
+            Margins after the pivot ran 20–65%. Not because Japanese cars are magic, but
+            because we stopped taking a risk we were not being compensated for and could
+            not measure.
+        </p>
+
+        <h2>Why I built FlipIQ after that</h2>
+
+        <p>
+            The uncomfortable realisation was that the pivot took two losses and several
+            weeks because the information needed to spot it was scattered across
+            three people's heads and a group chat. Nobody was tracking outcome-by-category
+            in a way that would have surfaced the pattern earlier.
+        </p>
+
+        <p>
+            So I specced <strong>FlipIQ</strong>: a deal-scoring tool with a listing alert
+            engine, automatic comparison against Carsales market valuations, a Kanban
+            pipeline for cars in progress, and — the part that actually matters — a flip
+            analytics database, so the next time a category is quietly bleeding us, it
+            shows up as a number instead of a feeling. I prioritised the backlog with RICE,
+            and the whole spec was driven by analysis of 35+ real flips rather than
+            guesses about what a tool should do.
+        </p>
+
+        <h2>What transfers</h2>
+
+        <p>
+            I think about the fat-tail thing constantly now, and it turns out to have
+            nothing to do with cars. Any estimate you treat as a point value when it's
+            really a distribution will eventually take a bite out of you, and it will do
+            it at the worst time. A build that "usually takes two days." A dependency
+            upgrade that's "probably fine." The average is not the number that hurts you;
+            the tail is.
+        </p>
+
+        <div class="callout">
+            <span class="callout-label">More detail</span>
+            <p>
+                The full case study — TAM/SAM/SOM sizing, the RICE-prioritised FlipIQ
+                roadmap, and the loss data behind the pivot — is
+                <a href="/yakiamotors.html">here</a>.
+            </p>
+        </div>
+
+        <div class="post-foot">
+            <a href="/#writing">&larr; More writing</a>
+        </div>
+    </article>
+
+    <script src="/assets/theme.js"></script>
+</body>
+</html>
